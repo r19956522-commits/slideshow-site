@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسلایدساز هوشمند</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+    <style>
+        body { font-family: 'Vazirmatn', Tahoma, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; margin: 0; padding: 20px; }
+        .card { background: white; color: #333; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 500px; text-align: center; }
+        input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
+        button { background: #764ba2; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; transition: 0.3s; }
+        button:hover { background: #5a377d; }
+        #status { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>اسلایدساز هوشمند</h2>
+    <input type="text" id="topic" placeholder="موضوع ارائه را وارد کنید...">
+    <input type="text" id="presenter" placeholder="نام ارائه‌دهنده (اختیاری)">
+    <button onclick="generatePPT()">ساخت پاورپوینت ۲۰ اسلایدی</button>
+    <div id="status"></div>
+</div>
+
+<script>
+async function generatePPT() {
+    const topic = document.getElementById('topic').value;
+    const presenter = document.getElementById('presenter').value || "ارائه‌دهنده";
+    const status = document.getElementById('status');
+    
+    if(!topic) { alert("لطفاً یک موضوع وارد کنید"); return; }
+    
+    status.innerText = "در حال ساخت اسلایدها...";
+    
+    let pptx = new PptxGenJS();
+    pptx.layout = 'LAYOUT_16x9';
+    pptx.defineSlideMaster({ title: 'MASTER_SLIDE', background: { color: 'FFFFFF' }, objects: [ { text: { text: topic, options: { x:0, y:0.2, w:'100%', fontSize:14, color:'764ba2', align:'center' } } } ] });
+
+    // Helper to add bullet slides
+    function addSlide(title, bullets) {
+        let slide = pptx.addSlide({ masterName: 'MASTER_SLIDE' });
+        slide.addText(title, { x:0.5, y:0.8, w:'90%', fontSize:30, bold:true, align:'right', color:'333333' });
+        slide.addText(bullets.map(b => ({ text: b, options: { bullet: true } })), { x:0.5, y:2.0, w:'90%', fontSize:18, align:'right' });
+    }
+
+    // 1. Title
+    let s1 = pptx.addSlide();
+    s1.addText(topic, { x:0, y:3, w:'100%', fontSize:44, bold:true, align:'center', color:'764ba2' });
+    s1.addText(presenter, { x:0, y:4.5, w:'100%', fontSize:20, align:'center' });
+
+    // 2-20
+    const slidesData = [
+        { title: "فهرست مطالب", b: ["مقدمه", "مفاهیم پایه", "تاریخچه", "محورهای اصلی", "مقایسه", "نتیجه‌گیری"] },
+        { title: "مقدمه و اهمیت موضوع", b: ["بررسی کلی موضوع", "چرا این مبحث مهم است؟", "اهداف این ارائه"] },
+        { title: "تعریف و مفاهیم پایه", b: ["تعریف دقیق " + topic, "اصطلاحات کلیدی", "چهارچوب مفاهیم"] },
+        { title: "تاریخچه و سیر تحول", b: ["ریشه‌های پیدایش", "تغییرات در طول زمان", "نقاط عطف مهم"] },
+        { title: "محور اصلی اول", b: ["بررسی جنبه فنی اول", "تحلیل داده‌ها", "مطالعه موردی کوتاه"] },
+        { title: "محور اصلی دوم", b: ["رویکرد استراتژیک", "بررسی ابعاد اجتماعی", "تاثیرات جانبی"] },
+        { title: "محور اصلی سوم", b: ["چالش‌های اجرایی", "راهکارهای بهبود", "استانداردها"] },
+        { title: "جدول مقایسه‌ای", isTable: true, data: [["شاخص", "وضعیت الف", "وضعیت ب"], ["هزینه", "کم", "زیاد"], ["زمان", "کوتاه", "طولانی"]] },
+        { title: "آمار و ارقام", b: ["نرخ رشد ۵ ساله: ۲۰٪", "میزان رضایت کاربران: ۸۵٪", "پیش‌بینی آینده: مثبت"] },
+        { title: "مزایا", b: ["افزایش بهره‌وری", "کاهش هزینه‌های جاری", "سهولت در استفاده"] },
+        { title: "چالش‌ها و معایب", b: ["پیچیدگی‌های اولیه", "نیاز به آموزش تخصصی", "محدودیت‌های زیرساختی"] },
+        { title: "نمونه‌های عملی", b: ["اجرا در صنعت ایکس", "مطالعه موردی در سازمان ایگرگ", "نتایج کسب شده"] },
+        { title: "جدول زمان‌بندی", isTable: true, data: [["فاز", "توضیح", "زمان"], ["آماده‌سازی", "بررسی اولیه", "۱ ماه"], ["اجرا", "پیاده‌سازی اصلی", "۳ ماه"]] },
+        { title: "فناوری‌ها و ابزارها", b: ["ابزار ۱: پلتفرم مدیریت", "ابزار ۲: نرم‌افزار تحلیل", "زیرساخت ابری"] },
+        { title: "نقش در آینده", b: ["نوآوری‌های پیش‌رو", "هوش مصنوعی و اتوماسیون", "تغییر پارادایم"] },
+        { title: "توصیه‌ها و راهکارها", b: ["بهبود مستمر فرآیندها", "سرمایه‌گذاری روی نیروی انسانی", "تحقیق و توسعه"] },
+        { title: "جمع‌بندی", b: ["خلاصه مطالب ارائه شده", "تاکید بر نکات کلیدی", "بازنگری اهداف"] },
+        { title: "نتیجه‌گیری و پیشنهادها", b: ["نتیجه نهایی", "مسیرهای آینده", "پیشنهاد برای شروع"] },
+        { title: "پرسش و پاسخ", b: ["با تشکر از توجه شما", "منتظر سوالات شما هستیم"] }
+    ];
+
+    slidesData.forEach(item => {
+        if(item.isTable) {
+            let slide = pptx.addSlide();
+            slide.addText(item.title, { x:0.5, y:0.5, fontSize:24, bold:true });
+            slide.addTable(item.data, { x:0.5, y:1.5, w:'90%', border:{pt:1}, fill:'F4F4F4' });
+        } else {
+            addSlide(item.title, item.b);
+        }
+    });
+
+    pptx.writeFile({ fileName: topic + '_Presentation.pptx' }).then(() => {
+        status.innerText = "فایل با موفقیت ساخته شد!";
+    });
+}
+</script>
+</body>
+</html>
