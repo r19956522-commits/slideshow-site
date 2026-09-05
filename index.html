@@ -3,91 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اسلایدساز هوشمند</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
+    <title>سایت جورچین | تولیدکننده پاورپوینت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
     <style>
-        body { font-family: 'Vazirmatn', Tahoma, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; margin: 0; padding: 20px; }
-        .card { background: white; color: #333; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); width: 100%; max-width: 500px; text-align: center; }
-        input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-        button { background: #764ba2; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-size: 16px; width: 100%; margin-top: 10px; transition: 0.3s; }
-        button:hover { background: #5a377d; }
-        #status { margin-top: 20px; font-weight: bold; }
+        body { margin: 0; overflow-x: hidden; font-family: 'Tahoma', sans-serif; background: #050505; }
+        
+        /* انیمیشن بک‌گراند */
+        .bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #050505 100%);
+        }
+        .puzzle-piece {
+            position: absolute; border-radius: 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05);
+            animation: float 15s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(10deg); }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
-<body>
+<body class="text-white min-h-screen flex items-center justify-center p-4">
 
-<div class="card">
-    <h2>اسلایدساز هوشمند</h2>
-    <input type="text" id="topic" placeholder="موضوع ارائه را وارد کنید...">
-    <input type="text" id="presenter" placeholder="نام ارائه‌دهنده (اختیاری)">
-    <button onclick="generatePPT()">ساخت پاورپوینت ۲۰ اسلایدی</button>
-    <div id="status"></div>
-</div>
+    <!-- بک‌گراند زنده -->
+    <div class="bg-mesh">
+        <div class="puzzle-piece" style="width: 200px; height: 200px; top: 10%; left: 10%;"></div>
+        <div class="puzzle-piece" style="width: 300px; height: 300px; bottom: 10%; right: 5%; animation-delay: -5s;"></div>
+        <div class="puzzle-piece" style="width: 150px; height: 150px; top: 50%; right: 20%; animation-delay: -10s;"></div>
+    </div>
 
-<script>
-async function generatePPT() {
-    const topic = document.getElementById('topic').value;
-    const presenter = document.getElementById('presenter').value || "ارائه‌دهنده";
-    const status = document.getElementById('status');
-    
-    if(!topic) { alert("لطفاً یک موضوع وارد کنید"); return; }
-    
-    status.innerText = "در حال ساخت اسلایدها...";
-    
-    let pptx = new PptxGenJS();
-    pptx.layout = 'LAYOUT_16x9';
-    pptx.defineSlideMaster({ title: 'MASTER_SLIDE', background: { color: 'FFFFFF' }, objects: [ { text: { text: topic, options: { x:0, y:0.2, w:'100%', fontSize:14, color:'764ba2', align:'center' } } } ] });
+    <!-- محتوای اصلی -->
+    <div class="glass-panel w-full max-w-lg p-8 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">جورچین</h1>
+            <p class="text-slate-400 mt-2">طراحی حرفه‌ای توسط: مهندس محمدرسول یزدیان</p>
+        </div>
 
-    // Helper to add bullet slides
-    function addSlide(title, bullets) {
-        let slide = pptx.addSlide({ masterName: 'MASTER_SLIDE' });
-        slide.addText(title, { x:0.5, y:0.8, w:'90%', fontSize:30, bold:true, align:'right', color:'333333' });
-        slide.addText(bullets.map(b => ({ text: b, options: { bullet: true } })), { x:0.5, y:2.0, w:'90%', fontSize:18, align:'right' });
-    }
+        <div class="space-y-5">
+            <input id="topic" type="text" placeholder="موضوع ارائه شما چیست؟" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+            <textarea id="details" rows="3" placeholder="توضیحات (مثلاً: ۵۰ اسلاید، علمی، با جداول آماری)" class="w-full p-4 rounded-2xl bg-white/5 border border-white/10 outline-none focus:ring-2 focus:ring-blue-500 transition-all"></textarea>
+            
+            <button onclick="generatePPT()" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl font-bold text-lg hover:scale-[1.02] transition-all shadow-lg shadow-blue-900/20">
+                ساخت هوشمند پاورپوینت (۵۰ اسلاید)
+            </button>
+        </div>
 
-    // 1. Title
-    let s1 = pptx.addSlide();
-    s1.addText(topic, { x:0, y:3, w:'100%', fontSize:44, bold:true, align:'center', color:'764ba2' });
-    s1.addText(presenter, { x:0, y:4.5, w:'100%', fontSize:20, align:'center' });
+        <p class="mt-8 text-center text-slate-500 text-xs leading-relaxed">
+            تمامی حقوق متعلق به سایت جورچین است.<br>
+            هرگونه کپی‌برداری از ساختار و کد این سایت پیگرد قانونی دارد.
+        </p>
+    </div>
 
-    // 2-20
-    const slidesData = [
-        { title: "فهرست مطالب", b: ["مقدمه", "مفاهیم پایه", "تاریخچه", "محورهای اصلی", "مقایسه", "نتیجه‌گیری"] },
-        { title: "مقدمه و اهمیت موضوع", b: ["بررسی کلی موضوع", "چرا این مبحث مهم است؟", "اهداف این ارائه"] },
-        { title: "تعریف و مفاهیم پایه", b: ["تعریف دقیق " + topic, "اصطلاحات کلیدی", "چهارچوب مفاهیم"] },
-        { title: "تاریخچه و سیر تحول", b: ["ریشه‌های پیدایش", "تغییرات در طول زمان", "نقاط عطف مهم"] },
-        { title: "محور اصلی اول", b: ["بررسی جنبه فنی اول", "تحلیل داده‌ها", "مطالعه موردی کوتاه"] },
-        { title: "محور اصلی دوم", b: ["رویکرد استراتژیک", "بررسی ابعاد اجتماعی", "تاثیرات جانبی"] },
-        { title: "محور اصلی سوم", b: ["چالش‌های اجرایی", "راهکارهای بهبود", "استانداردها"] },
-        { title: "جدول مقایسه‌ای", isTable: true, data: [["شاخص", "وضعیت الف", "وضعیت ب"], ["هزینه", "کم", "زیاد"], ["زمان", "کوتاه", "طولانی"]] },
-        { title: "آمار و ارقام", b: ["نرخ رشد ۵ ساله: ۲۰٪", "میزان رضایت کاربران: ۸۵٪", "پیش‌بینی آینده: مثبت"] },
-        { title: "مزایا", b: ["افزایش بهره‌وری", "کاهش هزینه‌های جاری", "سهولت در استفاده"] },
-        { title: "چالش‌ها و معایب", b: ["پیچیدگی‌های اولیه", "نیاز به آموزش تخصصی", "محدودیت‌های زیرساختی"] },
-        { title: "نمونه‌های عملی", b: ["اجرا در صنعت ایکس", "مطالعه موردی در سازمان ایگرگ", "نتایج کسب شده"] },
-        { title: "جدول زمان‌بندی", isTable: true, data: [["فاز", "توضیح", "زمان"], ["آماده‌سازی", "بررسی اولیه", "۱ ماه"], ["اجرا", "پیاده‌سازی اصلی", "۳ ماه"]] },
-        { title: "فناوری‌ها و ابزارها", b: ["ابزار ۱: پلتفرم مدیریت", "ابزار ۲: نرم‌افزار تحلیل", "زیرساخت ابری"] },
-        { title: "نقش در آینده", b: ["نوآوری‌های پیش‌رو", "هوش مصنوعی و اتوماسیون", "تغییر پارادایم"] },
-        { title: "توصیه‌ها و راهکارها", b: ["بهبود مستمر فرآیندها", "سرمایه‌گذاری روی نیروی انسانی", "تحقیق و توسعه"] },
-        { title: "جمع‌بندی", b: ["خلاصه مطالب ارائه شده", "تاکید بر نکات کلیدی", "بازنگری اهداف"] },
-        { title: "نتیجه‌گیری و پیشنهادها", b: ["نتیجه نهایی", "مسیرهای آینده", "پیشنهاد برای شروع"] },
-        { title: "پرسش و پاسخ", b: ["با تشکر از توجه شما", "منتظر سوالات شما هستیم"] }
-    ];
+    <script>
+        async function generatePPT() {
+            const topic = document.getElementById('topic').value || "ارائه علمی";
+            const pptx = new PctxGenJS ? new PptxGenJS() : new PptxGenJS(); // Fix reference
+            
+            pptx.layout = 'LAYOUT_16x9';
+            pptx.author = 'Mohammadrasoul Yazdian';
+            pptx.company = 'JorChin';
 
-    slidesData.forEach(item => {
-        if(item.isTable) {
-            let slide = pptx.addSlide();
-            slide.addText(item.title, { x:0.5, y:0.5, fontSize:24, bold:true });
-            slide.addTable(item.data, { x:0.5, y:1.5, w:'90%', border:{pt:1}, fill:'F4F4F4' });
-        } else {
-            addSlide(item.title, item.b);
+            for (let i = 1; i <= 50; i++) {
+                let slide = pptx.addSlide();
+                slide.background = { color: '050505' }; // Dark theme background
+                
+                // Branding on every slide
+                slide.addText('سایت جورچین | ' + topic, { x: 0.5, y: 0.1, fontSize: 10, color: '475569' });
+                slide.addText('توسعه‌دهنده: مهندس محمدرسول یزدیان', { x: 0.5, y: 5.1, fontSize: 8, color: '334155' });
+                
+                slide.addText(`اسلاید ${i} از ۵۰`, { x: 8, y: 0.1, fontSize: 10, color: '475569' });
+                
+                if (i === 1) {
+                    slide.addText(topic, { x: 1, y: 2.5, fontSize: 44, bold: true, color: 'ffffff' });
+                } else {
+                    slide.addText(`محتوای بخش ${Math.ceil(i/5)}`, { x: 1, y: 1.5, fontSize: 24, bold: true, color: '3b82f6' });
+                    slide.addText('در اینجا توضیحات تخصصی مربوط به موضوع شما قرار می‌گیرد. این قالب به‌صورت خودکار توسط سایت جورچین تولید شده است.', { x: 1, y: 2.5, w: '80%', fontSize: 16, color: 'e2e8f0' });
+                }
+            }
+
+            pptx.writeFile({ fileName: `JorChin_${topic}.pptx` });
         }
-    });
-
-    pptx.writeFile({ fileName: topic + '_Presentation.pptx' }).then(() => {
-        status.innerText = "فایل با موفقیت ساخته شد!";
-    });
-}
-</script>
+    </script>
 </body>
 </html>
+
