@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ===== جلوگیری از ایندکس شدن در گوگل ===== -->
     <meta name="robots" content="noindex, nofollow">
     <meta name="googlebot" content="noindex, nofollow">
     <title>پنل ادمین | برق یزدیان</title>
@@ -442,7 +441,7 @@
                 </div>
             </div>
 
-            <!-- تب فروش (با فیلترهای روزانه، هفتگی، ماهانه و کل) -->
+            <!-- تب فروش با فیلتر -->
             <div class="tab-content" id="tabSales">
                 <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
                     <button class="filter-btn active" data-filter="today" onclick="setSalesFilter('today')">📅 امروز</button>
@@ -483,10 +482,6 @@
             return [];
         }
 
-        function saveProducts(products) {
-            localStorage.setItem('productData', JSON.stringify(products));
-        }
-
         function loadPendingOrders() {
             const saved = localStorage.getItem('pendingOrders');
             if (saved) {
@@ -495,20 +490,12 @@
             return [];
         }
 
-        function savePendingOrders(orders) {
-            localStorage.setItem('pendingOrders', JSON.stringify(orders));
-        }
-
         function loadSalesHistory() {
             const saved = localStorage.getItem('salesHistory');
             if (saved) {
                 try { return JSON.parse(saved); } catch (e) { return []; }
             }
             return [];
-        }
-
-        function saveSalesHistory(sales) {
-            localStorage.setItem('salesHistory', JSON.stringify(sales));
         }
 
         // ============================================================
@@ -559,12 +546,12 @@
                             prod.count += item.qty;
                         }
                     });
-                    saveProducts(products);
+                    localStorage.setItem('productData', JSON.stringify(products));
                 }
             });
 
             if (changed) {
-                savePendingOrders(orders);
+                localStorage.setItem('pendingOrders', JSON.stringify(orders));
                 showSuccess('⏳ سفارش‌های منقضی‌شده به‌روزرسانی شدند.');
             }
         }
@@ -602,7 +589,7 @@
         }
 
         // ============================================================
-        // رندر سفارشات
+        // 📋 رندر سفارشات (از localStorage)
         // ============================================================
         function renderOrders() {
             const container = document.getElementById('ordersList');
@@ -620,18 +607,18 @@
                 const statusText = order.status === 'pending' ? '⏳ در انتظار' :
                     order.status === 'confirmed' ? '✅ تأیید شده' : '❌ رد شده';
 
-                const itemsText = order.items.map(i => `${i.name} (${i.qty})`).join('، ');
+                const itemsText = order.items ? order.items.map(i => `${i.name} (${i.qty})`).join('، ') : '';
 
                 html += `
                     <div class="order-item">
                         <div class="header">
                             <span><strong>🆔 سفارش:</strong> ${order.id}</span>
-                            <span><strong>💰 مبلغ:</strong> ${order.totalText}</span>
+                            <span><strong>💰 مبلغ:</strong> ${order.totalText || order.total.toLocaleString() + ' تومان'}</span>
                             <span class="status ${statusClass}">${statusText}</span>
                         </div>
                         <div class="details">
-                            <div><strong>👤 مشتری:</strong> ${order.customer.name} | 📞 ${order.customer.phone}</div>
-                            <div><strong>📍 آدرس:</strong> ${order.customer.address}</div>
+                            <div><strong>👤 مشتری:</strong> ${order.customer ? order.customer.name : 'نامشخص'} | 📞 ${order.customer ? order.customer.phone : 'ندارد'}</div>
+                            <div><strong>📍 آدرس:</strong> ${order.customer ? order.customer.address : 'ندارد'}</div>
                             <div><strong>📦 محصولات:</strong> ${itemsText}</div>
                             <div><strong>📅 تاریخ:</strong> ${new Date(order.timestamp).toLocaleString('fa-IR')}</div>
                             ${order.status === 'pending' ? `
@@ -662,7 +649,7 @@
             }
 
             order.status = 'confirmed';
-            savePendingOrders(orders);
+            localStorage.setItem('pendingOrders', JSON.stringify(orders));
 
             const sales = loadSalesHistory();
             sales.push({
@@ -670,10 +657,10 @@
                 customer: order.customer,
                 items: order.items,
                 total: order.total,
-                totalText: order.totalText,
+                totalText: order.totalText || order.total.toLocaleString() + ' تومان',
                 timestamp: Date.now()
             });
-            saveSalesHistory(sales);
+            localStorage.setItem('salesHistory', JSON.stringify(sales));
 
             showSuccess('✅ سفارش تأیید شد و به فروش اضافه گردید.');
             loadDashboard();
@@ -693,7 +680,7 @@
             }
 
             order.status = 'rejected';
-            savePendingOrders(orders);
+            localStorage.setItem('pendingOrders', JSON.stringify(orders));
 
             const products = loadProducts();
             order.items.forEach(item => {
@@ -702,7 +689,7 @@
                     prod.count += item.qty;
                 }
             });
-            saveProducts(products);
+            localStorage.setItem('productData', JSON.stringify(products));
 
             showSuccess('❌ سفارش رد شد و موجودی به انبار بازگردانده شد.');
             loadDashboard();
@@ -720,7 +707,7 @@
 
             let html = '';
             products.forEach((p, index) => {
-                const imgSrc = p.image || getPlaceholderImage(p.name);
+                const imgSrc = p.image || `https://placehold.co/300x200/1a1a1a/00d4ff?text=${encodeURIComponent(p.name)}`;
                 html += `
                     <div class="product-edit-item" data-index="${index}">
                         <img src="${imgSrc}" alt="${p.name}" class="img-preview" id="preview-${index}">
@@ -741,10 +728,6 @@
             container.innerHTML = html;
         }
 
-        function getPlaceholderImage(name) {
-            return `https://placehold.co/300x200/1a1a1a/00d4ff?text=${encodeURIComponent(name)}`;
-        }
-
         function uploadImage(index, input) {
             const file = input.files[0];
             if (!file) return;
@@ -754,9 +737,8 @@
                 const products = loadProducts();
                 if (index < products.length) {
                     products[index].image = imgData;
-                    saveProducts(products);
-                    const preview = document.getElementById(`preview-${index}`);
-                    if (preview) preview.src = imgData;
+                    localStorage.setItem('productData', JSON.stringify(products));
+                    document.getElementById(`preview-${index}`).src = imgData;
                     showSuccess('✅ عکس محصول با موفقیت آپلود شد!');
                 }
             };
@@ -784,7 +766,7 @@
             products[index].priceText = priceText || price.toLocaleString() + ' تومان';
             products[index].count = count;
 
-            saveProducts(products);
+            localStorage.setItem('productData', JSON.stringify(products));
             showSuccess('✅ محصول با موفقیت به‌روز شد!');
             renderProductsAdmin(products);
             updateStats();
@@ -802,7 +784,7 @@
         }
 
         // ============================================================
-        // نمایش فروش با فیلترهای روزانه، هفتگی، ماهانه و کل
+        // 📊 نمایش فروش با فیلتر (از localStorage)
         // ============================================================
         function getFilteredSales() {
             const sales = loadSalesHistory();
@@ -815,7 +797,7 @@
                 if (salesFilter === 'today') return sale.timestamp >= today;
                 if (salesFilter === 'week') return sale.timestamp >= weekStart;
                 if (salesFilter === 'month') return sale.timestamp >= monthStart;
-                return true; // all
+                return true;
             });
         }
 
@@ -843,13 +825,13 @@
             let totalAll = 0;
             filteredSales.forEach(s => {
                 totalAll += s.total;
-                const itemsText = s.items.map(i => `${i.name} (${i.qty})`).join('، ');
+                const itemsText = s.items ? s.items.map(i => `${i.name} (${i.qty})`).join('، ') : '';
                 html += `
                     <div class="sales-item">
                         <div><strong>🆔 سفارش:</strong> ${s.id}</div>
-                        <div><strong>👤 مشتری:</strong> ${s.customer.name} | 📞 ${s.customer.phone}</div>
+                        <div><strong>👤 مشتری:</strong> ${s.customer ? s.customer.name : 'نامشخص'} | 📞 ${s.customer ? s.customer.phone : 'ندارد'}</div>
                         <div><strong>📦 محصولات:</strong> ${itemsText}</div>
-                        <div><strong>💰 مبلغ:</strong> <span class="total-sale">${s.totalText}</span></div>
+                        <div><strong>💰 مبلغ:</strong> <span class="total-sale">${s.totalText || s.total.toLocaleString() + ' تومان'}</span></div>
                         <div><strong>📅 تاریخ:</strong> ${new Date(s.timestamp).toLocaleString('fa-IR')}</div>
                     </div>
                 `;
@@ -920,4 +902,4 @@
     </script>
 
 </body>
-    </html>
+                        </html>
