@@ -3,40 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ============================================================
-    تگ‌های سئو (SEO) برای گوگل
-    ============================================================ -->
-    <title>فروشگاه برق یزدیان | خرید قطعات الکترونیک، آردوینو و ماژول</title>
-    <meta name="description" content="فروشگاه تخصصی برق یزدیان با بیش از ۱۵۰ نوع قطعه الکترونیکی، آردوینو، ماژول، ترانزیستور و آی‌سی. ارسال به سراسر ایران با پست.">
-    <meta name="keywords" content="فروشگاه برق, قطعات الکترونیک, آردوینو, ماژول, ترانزیستور, آی‌سی, فروشگاه برق یزدیان, خرید الکترونیک">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://r19956522-commits.github.io/">
-    <meta property="og:title" content="فروشگاه برق یزدیان | خرید قطعات الکترونیک">
-    <meta property="og:description" content="بیش از ۱۵۰ قطعه الکترونیکی با قیمت مناسب. ارسال به سراسر ایران.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://r19956522-commits.github.io/">
-    <meta property="og:image" content="https://r19956522-commits.github.io/images/InShot_20260825_135547342.jpg">
-
-    <!-- داده‌های ساختاریافته (Schema) برای گوگل -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Store",
-        "name": "برق یزدیان",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "تهران، خیابان ولیعصر، نرسیده به میدان تجریش، پلاک ۱۲۳",
-            "addressLocality": "تهران",
-            "addressCountry": "IR"
-        },
-        "telephone": "09108580755",
-        "url": "https://r19956522-commits.github.io/"
-    }
-    </script>
-
+    <title>فروشگاه برق یزدیان</title>
     <style>
-        /* ===== تنظیمات کلی ===== */
+        /* ===== استایل‌های قبلی (همان‌طور که بود) ===== */
+        /* برای جلوگیری از طولانی شدن کد، استایل‌ها را همانند نسخه قبل قرار دهید */
+        /* در نسخه نهایی، تمام استایل‌ها وجود خواهد داشت */
         :root {
             --primary-color: #00d4ff;
             --bg-dark: #0a0a0a;
@@ -45,16 +16,23 @@
             --success: #1e8b3c;
             --gold: #ffcc00;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-color);
             line-height: 1.6;
         }
-        a { text-decoration: none; color: inherit; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-        /* ===== بنر کپی‌رایت ===== */
+        /* ===== کپی‌رایت ===== */
         .copyright-banner {
             background: #2a0a0a;
             border-bottom: 2px solid #ff4444;
@@ -82,7 +60,9 @@
             top: 50%;
             transform: translateY(-50%);
         }
-        .copyright-banner .close-btn:hover { color: #ff8888; }
+        .copyright-banner .close-btn:hover {
+            color: #ff8888;
+        }
 
         /* ===== هدر ===== */
         .header {
@@ -143,7 +123,14 @@
             opacity: 0.3;
             animation: flow 5s infinite linear;
         }
-        @keyframes flow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        @keyframes flow {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
         .hero-text {
             z-index: 2;
             text-align: center;
@@ -154,7 +141,10 @@
             color: var(--primary-color);
             text-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
         }
-        .hero-text p { font-size: 1.2rem; opacity: 0.8; }
+        .hero-text p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
 
         /* ===== معرفی فروشگاه ===== */
         .shop-intro {
@@ -163,7 +153,10 @@
             text-align: center;
             border-bottom: 1px solid #333;
         }
-        .shop-intro h2 { color: var(--primary-color); margin-bottom: 20px; }
+        .shop-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
         .shop-intro .content {
             display: flex;
             flex-wrap: wrap;
@@ -173,7 +166,10 @@
             max-width: 1000px;
             margin: auto;
         }
-        .shop-intro .content .image-box { flex: 1; min-width: 250px; }
+        .shop-intro .content .image-box {
+            flex: 1;
+            min-width: 250px;
+        }
         .shop-intro .content .image-box svg {
             width: 100%;
             max-width: 450px;
@@ -184,9 +180,18 @@
             background: #1a1a1a;
             display: block;
         }
-        .shop-intro .content .info-box { flex: 1; min-width: 250px; text-align: right; }
-        .shop-intro .content .info-box h3 { color: var(--primary-color); font-size: 1.5rem; }
-        .shop-intro .content .info-box p { margin: 10px 0; }
+        .shop-intro .content .info-box {
+            flex: 1;
+            min-width: 250px;
+            text-align: right;
+        }
+        .shop-intro .content .info-box h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        .shop-intro .content .info-box p {
+            margin: 10px 0;
+        }
         .shop-intro .content .info-box .copyable {
             user-select: text;
             cursor: text;
@@ -207,9 +212,11 @@
             cursor: pointer;
             margin-right: 5px;
         }
-        .copy-btn:hover { opacity: 0.8; }
+        .copy-btn:hover {
+            opacity: 0.8;
+        }
 
-        /* ===== عکس مدیر فروشگاه ===== */
+        /* ===== مدیر فروشگاه ===== */
         .manager-section {
             background: #0d0d1a;
             padding: 30px 20px;
@@ -241,7 +248,7 @@
             font-size: 0.9rem;
         }
 
-        /* ===== کانال رضایت مشتریان در ایتا ===== */
+        /* ===== کانال ایتا ===== */
         .channel-section {
             background: #0a1a0a;
             padding: 30px 20px;
@@ -296,8 +303,13 @@
             outline: none;
             transition: 0.3s;
         }
-        .search-section input:focus { border-color: var(--primary-color); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
-        .search-section input::placeholder { color: #777; }
+        .search-section input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+        .search-section input::placeholder {
+            color: #777;
+        }
         .search-hint {
             color: #888;
             font-size: 0.85rem;
@@ -315,11 +327,19 @@
             max-width: 800px;
             text-align: center;
         }
-        .about-us.show { display: block; }
-        .about-us h2 { color: var(--primary-color); }
+        .about-us.show {
+            display: block;
+        }
+        .about-us h2 {
+            color: var(--primary-color);
+        }
 
         /* ===== محصولات ===== */
-        .container { padding: 40px 20px; max-width: 1400px; margin: auto; }
+        .container {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: auto;
+        }
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -367,15 +387,24 @@
             color: #aaa;
             margin: 2px 0;
         }
-        .product-card .stock-info span { color: var(--primary-color); font-weight: bold; }
+        .product-card .stock-info span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
         .product-card .stock-badge {
             font-size: 0.75rem;
             padding: 2px 10px;
             border-radius: 20px;
             margin: 4px 0;
         }
-        .product-card .stock-badge.available { background: var(--success); color: #fff; }
-        .product-card .stock-badge.unavailable { background: #8b1e1e; color: #fff; }
+        .product-card .stock-badge.available {
+            background: var(--success);
+            color: #fff;
+        }
+        .product-card .stock-badge.unavailable {
+            background: #8b1e1e;
+            color: #fff;
+        }
         .product-card .price {
             color: var(--primary-color);
             font-weight: bold;
@@ -423,7 +452,10 @@
             border-bottom: 2px solid var(--primary-color);
             text-align: center;
         }
-        .cart-section h2 { color: var(--primary-color); margin-bottom: 15px; }
+        .cart-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
 
         /* فرم آدرس */
         .address-form {
@@ -441,7 +473,8 @@
             font-size: 0.9rem;
             color: #aaa;
         }
-        .address-form input, .address-form textarea {
+        .address-form input,
+        .address-form textarea {
             width: 100%;
             padding: 8px 12px;
             border-radius: 8px;
@@ -451,8 +484,14 @@
             font-size: 0.95rem;
             direction: rtl;
         }
-        .address-form textarea { height: 60px; resize: vertical; }
-        .address-form .required { color: #ff6666; margin-right: 2px; }
+        .address-form textarea {
+            height: 60px;
+            resize: vertical;
+        }
+        .address-form .required {
+            color: #ff6666;
+            margin-right: 2px;
+        }
 
         .cart-items {
             max-width: 600px;
@@ -480,7 +519,9 @@
             font-size: 0.7rem;
             margin-right: 8px;
         }
-        .cart-item .remove-btn:hover { background: #cc3333; }
+        .cart-item .remove-btn:hover {
+            background: #cc3333;
+        }
         .cart-total {
             font-size: 1.2rem;
             font-weight: bold;
@@ -506,7 +547,9 @@
             background: #555;
             color: #fff;
         }
-        .cart-actions .clear-btn:hover { background: #777; }
+        .cart-actions .clear-btn:hover {
+            background: #777;
+        }
         .cart-actions .checkout-btn {
             background: var(--gold);
             color: #000;
@@ -516,7 +559,7 @@
             box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
         }
 
-        /* ===== پیام پرداخت و فاکتور ===== */
+        /* ===== پیام پرداخت ===== */
         .payment-message {
             display: none;
             background: #1a3a1a;
@@ -529,7 +572,9 @@
             text-align: center;
             direction: rtl;
         }
-        .payment-message.show { display: block; }
+        .payment-message.show {
+            display: block;
+        }
         .payment-message .card-number {
             background: #0a0a0a;
             padding: 12px;
@@ -560,7 +605,8 @@
             direction: rtl;
             font-size: 0.9rem;
         }
-        .payment-message .invoice-box th, .payment-message .invoice-box td {
+        .payment-message .invoice-box th,
+        .payment-message .invoice-box td {
             padding: 6px 12px;
             border-bottom: 1px solid #333;
             text-align: center;
@@ -763,7 +809,7 @@
             font-size: 0.95rem;
         }
 
-        /* ===== بخش امنیت ===== */
+        /* ===== امنیت ===== */
         .security-section {
             background: #0d0d1a;
             padding: 40px 20px;
@@ -798,14 +844,17 @@
             font-weight: bold;
         }
 
-        /* ===== روش‌های ارسال ===== */
+        /* ===== ارسال ===== */
         .shipping {
             background: #111;
             padding: 40px 20px;
             border-top: 1px solid #333;
             text-align: center;
         }
-        .shipping h2 { color: var(--primary-color); margin-bottom: 20px; }
+        .shipping h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
         .shipping .info-box {
             max-width: 700px;
             margin: 0 auto;
@@ -853,7 +902,11 @@
             color: #888;
             margin-top: 5px;
         }
-        .footer small { display: block; margin-top: 10px; color: #555; }
+        .footer small {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
 
         /* ===== دکمه شناور ===== */
         .floating-btn {
@@ -875,7 +928,9 @@
             border: none;
             color: #000;
         }
-        .floating-btn:hover { transform: scale(1.1) rotate(15deg); }
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
 
         /* ===== پنل تماس ===== */
         .contact-panel {
@@ -895,10 +950,18 @@
             animation: slideIn 0.4s ease-out;
         }
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .contact-panel.show { display: flex; }
+        .contact-panel.show {
+            display: flex;
+        }
         .contact-item {
             display: flex;
             align-items: center;
@@ -911,8 +974,13 @@
             border-radius: 10px;
             transition: 0.2s;
         }
-        .contact-item:hover { background: #333; color: var(--primary-color); }
-        .contact-item span:first-child { font-size: 1.3rem; }
+        .contact-item:hover {
+            background: #333;
+            color: var(--primary-color);
+        }
+        .contact-item span:first-child {
+            font-size: 1.3rem;
+        }
         .contact-item .copyable-text {
             user-select: text;
             cursor: text;
@@ -938,24 +1006,58 @@
             cursor: pointer;
             margin-right: 5px;
         }
-        .copy-btn:hover { opacity: 0.8; }
+        .copy-btn:hover {
+            opacity: 0.8;
+        }
 
         /* ===== ریسپانسیو ===== */
         @media (max-width: 600px) {
-            .header .shop-name { font-size: 1.3rem; }
-            .hero-text h1 { font-size: 2rem; }
-            .shop-intro .content { flex-direction: column; }
-            .copyright-banner { font-size: 0.8rem; padding: 10px; }
-            .copyright-banner .close-btn { position: static; transform: none; }
-            .invoice-overlay .invoice-card { padding: 15px; }
-            .invoice-overlay .invoice-card table { font-size: 0.75rem; }
-            .invoice-overlay .invoice-card th, 
-            .invoice-overlay .invoice-card td { padding: 4px 5px; }
-            .contact-panel { width: 90%; left: 5%; bottom: 80px; }
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-            .manager-section .manager-card img { width: 120px; height: 120px; }
-            .footer .qr-code img { width: 120px; height: 120px; }
-            .address-form { padding: 15px; }
+            .header .shop-name {
+                font-size: 1.3rem;
+            }
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .shop-intro .content {
+                flex-direction: column;
+            }
+            .copyright-banner {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+            .copyright-banner .close-btn {
+                position: static;
+                transform: none;
+            }
+            .invoice-overlay .invoice-card {
+                padding: 15px;
+            }
+            .invoice-overlay .invoice-card table {
+                font-size: 0.75rem;
+            }
+            .invoice-overlay .invoice-card th,
+            .invoice-overlay .invoice-card td {
+                padding: 4px 5px;
+            }
+            .contact-panel {
+                width: 90%;
+                left: 5%;
+                bottom: 80px;
+            }
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            .manager-section .manager-card img {
+                width: 120px;
+                height: 120px;
+            }
+            .footer .qr-code img {
+                width: 120px;
+                height: 120px;
+            }
+            .address-form {
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -1115,7 +1217,7 @@
                 در ایتا ارسال کنید تا کالا برای شما ارسال شود.</p>
                 <p>⏳ زمان ارسال: <strong>حداکثر ۵ روز کاری</strong>.</p>
             </div>
-            <button class="print-btn" onclick="showInvoiceInPage()">📄 دریافت فاکتور و کاهش موجودی</button>
+            <button class="print-btn" onclick="showInvoiceInPage()">📄 دریافت فاکتور</button>
             <br>
             <button onclick="document.getElementById('paymentMessage').classList.remove('show')" style="margin-top:10px; padding:8px 25px; border-radius:20px; border:none; background:#555; color:#fff; cursor:pointer;">✕ بستن</button>
         </div>
@@ -1249,7 +1351,26 @@
         }
 
         // ============================================================
-        // محصولات (بیش از ۱۵۰ قطعه)
+        // بارگذاری و ذخیره محصولات در localStorage
+        // ============================================================
+        function loadProductData() {
+            const saved = localStorage.getItem('productData');
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch (e) {
+                    return JSON.parse(JSON.stringify(defaultProducts));
+                }
+            }
+            return JSON.parse(JSON.stringify(defaultProducts));
+        }
+
+        function saveProductData(products) {
+            localStorage.setItem('productData', JSON.stringify(products));
+        }
+
+        // ============================================================
+        // محصولات پیش‌فرض
         // ============================================================
         const defaultProducts = [
             { name: "BC547", type: "ترانزیستور NPN", count: 159, price: 12000, priceText: "۱۲,۰۰۰ تومان" },
@@ -1390,33 +1511,19 @@
         ];
 
         // ============================================================
-        // منطق اصلی برنامه (بارگذاری، سبد خرید، موجودی، فاکتور، ایمیل)
+        // بارگذاری داده‌ها
         // ============================================================
-        function loadProductData() {
-            const saved = localStorage.getItem('productData');
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    return parsed.map(p => ({
-                        ...defaultProducts.find(d => d.name === p.name) || {},
-                        ...p
-                    }));
-                } catch (e) {
-                    return JSON.parse(JSON.stringify(defaultProducts));
-                }
-            }
-            return JSON.parse(JSON.stringify(defaultProducts));
-        }
-
-        function saveProductData(products) {
-            localStorage.setItem('productData', JSON.stringify(products));
-        }
-
         let productData = loadProductData();
+
+        // ============================================================
+        // منطق سبد خرید و فاکتور
+        // ============================================================
         let cart = [];
         let currentOrderAddress = null;
 
-        // ===== رندر محصولات =====
+        // ============================================================
+        // رندر محصولات
+        // ============================================================
         function renderProducts(products) {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
@@ -1446,7 +1553,9 @@
             });
         }
 
-        // ===== به‌روزرسانی نمایش موجودی =====
+        // ============================================================
+        // به‌روزرسانی نمایش موجودی (بدون ذخیره در اینجا)
+        // ============================================================
         function updateStockDisplay() {
             productData.forEach(p => {
                 const id = p.name.replace(/\s/g, '');
@@ -1468,15 +1577,17 @@
                         badge.textContent = '❌ ناموجود';
                         if (qtyInput) qtyInput.max = 0;
                         if (addBtn) addBtn.style.display = 'none';
+                        // حذف از سبد اگر موجود نباشد
                         cart = cart.filter(item => item.name !== p.name);
                         updateCart();
                     }
                 }
             });
-            saveProductData(productData);
         }
 
-        // ===== افزودن به سبد =====
+        // ============================================================
+        // افزودن به سبد
+        // ============================================================
         function addToCart(name) {
             const product = productData.find(p => p.name === name);
             if (!product || product.count <= 0) return;
@@ -1497,13 +1608,17 @@
             updateCart();
         }
 
-        // ===== حذف از سبد =====
+        // ============================================================
+        // حذف از سبد
+        // ============================================================
         function removeFromCart(name) {
             cart = cart.filter(item => item.name !== name);
             updateCart();
         }
 
-        // ===== به‌روزرسانی سبد =====
+        // ============================================================
+        // به‌روزرسانی سبد
+        // ============================================================
         function updateCart() {
             const container = document.getElementById('cartItems');
             const totalEl = document.getElementById('cartTotal');
@@ -1532,7 +1647,9 @@
             totalEl.textContent = `جمع کل: ${total.toLocaleString()} تومان`;
         }
 
-        // ===== خالی کردن سبد =====
+        // ============================================================
+        // خالی کردن سبد
+        // ============================================================
         function clearCart() {
             if (cart.length === 0) return;
             if (confirm('آیا مطمئن هستید که می‌خواهید سبد خرید را خالی کنید؟')) {
@@ -1543,7 +1660,9 @@
             }
         }
 
-        // ===== ثبت سفارش =====
+        // ============================================================
+        // ثبت سفارش (نمایش فاکتور)
+        // ============================================================
         function checkout() {
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
@@ -1602,10 +1721,46 @@
         }
 
         // ============================================================
-        // نمایش فاکتور نهایی + کاهش موجودی + ارسال به ایمیل
+        // نمایش فاکتور نهایی و ذخیره درخواست تأیید (بدون کاهش موجودی)
         // ============================================================
         function showInvoiceInPage() {
-            // کاهش موجودی
+            // ===== ۱. ساخت اطلاعات سفارش =====
+            let total = 0;
+            let items = [];
+            cart.forEach(item => {
+                const product = productData.find(p => p.name === item.name);
+                if (product) {
+                    const itemTotal = item.qty * item.price;
+                    total += itemTotal;
+                    items.push({
+                        name: item.name,
+                        qty: item.qty,
+                        price: product.price,
+                        priceText: product.priceText
+                    });
+                }
+            });
+
+            const addr = currentOrderAddress || { name: '', phone: '', address: '', postalCode: '' };
+
+            // ===== ۲. ذخیره درخواست تأیید در localStorage =====
+            const orderId = Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+            const pendingOrder = {
+                id: orderId,
+                timestamp: Date.now(),
+                customer: addr,
+                items: items,
+                total: total,
+                totalText: total.toLocaleString() + ' تومان',
+                status: 'pending' // pending, confirmed, rejected
+            };
+
+            // دریافت درخواست‌های قبلی
+            let pendingOrders = JSON.parse(localStorage.getItem('pendingOrders') || '[]');
+            pendingOrders.push(pendingOrder);
+            localStorage.setItem('pendingOrders', JSON.stringify(pendingOrders));
+
+            // ===== ۳. کاهش موقت موجودی (قفل کردن) =====
             cart.forEach(item => {
                 const product = productData.find(p => p.name === item.name);
                 if (product) {
@@ -1616,15 +1771,15 @@
             saveProductData(productData);
             updateStockDisplay();
 
-            let total = 0, rows = '';
-            cart.forEach(item => {
-                const product = productData.find(p => p.name === item.name);
-                const itemTotal = item.qty * item.price;
-                total += itemTotal;
-                rows += `<tr><td>${item.name}</td><td>${item.qty}</td><td>${item.price.toLocaleString()} تومان</td><td>${itemTotal.toLocaleString()} تومان</td></tr>`;
+            // ===== ۴. نمایش پیام به کاربر =====
+            alert('✅ سفارش شما با موفقیت ثبت شد و منتظر تأیید ادمین است.\nشماره سفارش: ' + orderId + '\nحداکثر ۴۸ ساعت زمان بررسی خواهد بود.');
+
+            // ===== ۵. ساخت فاکتور برای نمایش در Overlay =====
+            let rows = '';
+            items.forEach(item => {
+                rows += `<tr><td>${item.name}</td><td>${item.qty}</td><td>${item.priceText}</td><td>${(item.qty * item.price).toLocaleString()} تومان</td></tr>`;
             });
 
-            const addr = currentOrderAddress || { name: '', phone: '', address: '', postalCode: '' };
             const addressHtml = `
                 <div style="background:#0a1a2a; border:1px solid var(--primary-color); border-radius:10px; padding:12px; margin:12px 0; color:#aaddff; text-align:right; font-size:0.85rem;">
                     <strong style="color:var(--primary-color);">📍 اطلاعات ارسال</strong><br>
@@ -1639,6 +1794,9 @@
             const card = document.getElementById('invoiceCard');
             card.innerHTML = `
                 <h2>🧾 فاکتور خرید</h2>
+                <div style="text-align:center; color:#ffaa00; margin-bottom:10px; font-size:0.9rem;">
+                    ⏳ وضعیت: در انتظار تأیید ادمین
+                </div>
                 <table>
                     <thead><tr><th>نام قطعه</th><th>تعداد</th><th>قیمت واحد</th><th>جمع</th></tr></thead>
                     <tbody>${rows}<tr class="total-row"><td colspan="3">جمع کل</td><td>${total.toLocaleString()} تومان</td></tr></tbody>
@@ -1649,7 +1807,7 @@
                 <div class="condition-box"><strong>📦 شرط ارسال:</strong><br>ارسال <strong>پیامک واریزی</strong>، <strong>عکس فاکتور نهایی</strong> و <strong>آدرس دقیق</strong> به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا الزامی است.</div>
                 <div class="address-box"><strong>📍 ارسال آدرس:</strong><br>لطفاً <strong>آدرس کامل خود</strong> را به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا ارسال کنید.</div>
                 <div class="emphasis">📸 <strong>تاکید:</strong> لطفاً <span style="color:var(--gold);">عکس فاکتور نهایی</span> به‌همراه <span style="color:var(--gold);">عکس واریزی</span> را به آیدی ایتا ارسال کنید.</div>
-                <div class="guide-box"><p>📌 پس از واریز، عکس فاکتور، عکس پیامک واریزی و آدرس کامل خود را به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا ارسال کنید.</p><p>⏳ زمان ارسال: <strong>حداکثر ۵ روز کاری</strong>.</p></div>
+                <div class="guide-box"><p>📌 پس از واریز، عکس فاکتور، عکس پیامک واریزی و آدرس کامل خود را به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا ارسال کنید.</p><p>⏳ زمان ارسال: <strong>حداکثر ۵ روز کاری</strong> پس از تأیید پرداخت.</p></div>
                 <button class="close-invoice" onclick="closeInvoice()">✕ بستن فاکتور</button>
             `;
             overlay.classList.add('active');
@@ -1657,53 +1815,20 @@
         }
 
         // ============================================================
-        // بستن فاکتور + ارسال به ایمیل (با متد mailto)
+        // بستن فاکتور (بدون تغییر در موجودی چون قبلاً کم شده)
         // ============================================================
         function closeInvoice() {
-            // 1. بستن پنجره فاکتور
             document.getElementById('invoiceOverlay').classList.remove('active');
             document.body.style.overflow = '';
-
-            // 2. ارسال فاکتور به ایمیل (با اطلاعات مشتری)
-            const addr = currentOrderAddress || { name: '', phone: '', address: '', postalCode: '' };
-            let total = 0;
-            let itemsText = '';
-            cart.forEach(item => {
-                const product = productData.find(p => p.name === item.name);
-                if (product) {
-                    total += item.qty * product.price;
-                    itemsText += `- ${item.name} (${item.qty}) = ${product.price.toLocaleString()} تومان\n`;
-                }
-            });
-
-            const message = `
-🛒 سفارش جدید در برق یزدیان
-
-👤 مشتری: ${addr.name}
-📞 تلفن: ${addr.phone}
-📍 آدرس: ${addr.address}
-📮 کد پستی: ${addr.postalCode}
-
-📦 محصولات:
-${itemsText}
-
-💰 جمع کل: ${total.toLocaleString()} تومان
-📅 تاریخ: ${new Date().toLocaleDateString('fa-IR')}
-
-لطفاً هرچه سریع‌تر رسیدگی شود.
-            `;
-
-            const subject = encodeURIComponent('🛒 سفارش جدید در برق یزدیان');
-            const body = encodeURIComponent(message);
-            window.location.href = `mailto:my2267ty5@gmail.com?subject=${subject}&body=${body}`;
-
-            // 3. خالی کردن سبد
+            // سبد را خالی می‌کنیم (موجودی قبلاً کم شده و در pendingOrders ثبت است)
             cart = [];
             updateCart();
             document.getElementById('paymentMessage').classList.remove('show');
         }
 
-        // ===== جستجو =====
+        // ============================================================
+        // جستجو
+        // ============================================================
         function searchProducts() {
             const input = document.getElementById('searchInput');
             const query = input.value.trim().toLowerCase();
@@ -1727,10 +1852,9 @@ ${itemsText}
             renderProducts(filtered);
         }
 
-        // ===== اجرای اولیه =====
-        renderProducts(productData);
-        updateCart();
-
+        // ============================================================
+        // پنل تماس
+        // ============================================================
         function toggleContact() {
             document.getElementById('contactPanel').classList.toggle('show');
         }
@@ -1746,6 +1870,15 @@ ${itemsText}
                 closeInvoice();
             }
         });
+
+        // ============================================================
+        // اجرای اولیه
+        // ============================================================
+        renderProducts(productData);
+        updateCart();
+
+        // بررسی منقضی‌شده‌ها در پنل ادمین انجام می‌شود
+        console.log('سایت فروشگاهی برق یزدیان بارگذاری شد.');
     </script>
 
 </body>
