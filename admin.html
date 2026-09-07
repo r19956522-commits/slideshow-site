@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="googlebot" content="noindex, nofollow">
-    <title>پنل ادمین | برق یزدیان</title>
+    <title>پنل مدیریت محصولات | برق یزدیان</title>
     <style>
         * {
             margin: 0;
@@ -28,17 +27,23 @@
             padding: 30px;
             border-radius: 20px;
             border: 2px solid #00d4ff;
-            max-width: 950px;
+            max-width: 1000px;
             width: 100%;
             box-shadow: 0 0 50px rgba(0, 212, 255, 0.1);
         }
         .admin-panel h1 {
             color: #00d4ff;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-size: 1.8rem;
             border-bottom: 2px solid #00d4ff;
             padding-bottom: 10px;
+        }
+        .admin-panel .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
         .admin-panel label {
             display: block;
@@ -59,9 +64,7 @@
             direction: rtl;
         }
         .admin-panel button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
+            padding: 12px 25px;
             border-radius: 30px;
             border: none;
             background: #00d4ff;
@@ -77,146 +80,65 @@
         }
         .login-box {
             display: block;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .login-box button {
+            width: 100%;
+            margin-top: 15px;
         }
         .dashboard {
             display: none;
         }
-        .info-cards {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .info-card {
+
+        /* کارت آمار */
+        .stats-card {
             background: #0a0a0a;
             padding: 15px 20px;
             border-radius: 10px;
             border: 1px solid #333;
-            flex: 1;
-            min-width: 120px;
             text-align: center;
+            margin-bottom: 20px;
         }
-        .info-card .number {
-            font-size: 1.5rem;
+        .stats-card .number {
+            font-size: 2rem;
             color: #00d4ff;
             font-weight: bold;
         }
-        .info-card .label {
-            font-size: 0.8rem;
+        .stats-card .label {
+            font-size: 0.9rem;
             color: #888;
         }
 
-        .tab-bar {
-            display: flex;
-            gap: 10px;
-            margin: 15px 0;
-            flex-wrap: wrap;
+        /* جستجو */
+        .search-box {
+            margin-bottom: 15px;
         }
-        .tab-bar button {
-            flex: 1;
-            min-width: 100px;
+        .search-box input {
+            width: 100%;
             padding: 10px;
-            background: #0a0a0a;
-            border: 1px solid #333;
-            color: #aaa;
             border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-        .tab-bar button.active {
-            border-color: #00d4ff;
+            border: 1px solid #333;
+            background: #0a0a0a;
             color: #fff;
-            background: #111;
+            font-size: 1rem;
         }
-        .tab-content {
-            display: none;
-            background: #0a0a0a;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            max-height: 500px;
+
+        /* لیست محصولات */
+        .product-list {
+            max-height: 550px;
             overflow-y: auto;
+            margin-top: 10px;
         }
-        .tab-content.active {
-            display: block;
-        }
-        .tab-content::-webkit-scrollbar {
+        .product-list::-webkit-scrollbar {
             width: 6px;
         }
-        .tab-content::-webkit-scrollbar-thumb {
+        .product-list::-webkit-scrollbar-thumb {
             background: #00d4ff;
             border-radius: 10px;
         }
 
-        .order-item {
-            background: #111;
-            padding: 12px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            margin-bottom: 10px;
-        }
-        .order-item .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 8px;
-        }
-        .order-item .details {
-            font-size: 0.85rem;
-            color: #aaa;
-            margin-top: 5px;
-        }
-        .order-item .status {
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-        .status-pending {
-            background: #b8860b;
-            color: #fff;
-        }
-        .status-confirmed {
-            background: #1e8b3c;
-            color: #fff;
-        }
-        .status-rejected {
-            background: #8b1e1e;
-            color: #fff;
-        }
-        .order-item .actions button {
-            width: auto;
-            padding: 5px 15px;
-            margin: 3px;
-            font-size: 0.8rem;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-confirm {
-            background: #44ff44;
-            color: #000;
-        }
-        .btn-reject {
-            background: #ff4444;
-            color: #fff;
-        }
-        .btn-confirm:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(68, 255, 68, 0.3);
-        }
-        .btn-reject:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
-        }
-
-        .product-edit-item {
+        .product-item {
             display: flex;
             gap: 10px;
             align-items: center;
@@ -227,10 +149,18 @@
             margin-bottom: 8px;
             border: 1px solid #333;
         }
-        .product-edit-item input,
-        .product-edit-item select {
+        .product-item .img-preview {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #333;
+            flex-shrink: 0;
+        }
+        .product-item input,
+        .product-item select {
             flex: 1;
-            min-width: 100px;
+            min-width: 80px;
             padding: 6px 10px;
             border-radius: 6px;
             border: 1px solid #333;
@@ -238,62 +168,53 @@
             color: #fff;
             font-size: 0.9rem;
         }
-        .product-edit-item button {
-            width: auto;
-            padding: 6px 15px;
-            margin: 0;
-            font-size: 0.8rem;
+        .product-item .btn-save {
             background: #00d4ff;
             color: #000;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .product-item .btn-save:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .file-input-wrapper .btn-file {
+            background: #555;
+            color: #fff;
+            padding: 4px 12px;
             border-radius: 20px;
             border: none;
+            font-size: 0.8rem;
             cursor: pointer;
         }
-        .product-edit-item button:hover {
-            transform: scale(1.05);
-        }
-        .product-edit-item .img-preview {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 1px solid #333;
-        }
-
-        .sales-item {
-            border-bottom: 1px solid #333;
-            padding: 8px 0;
-            font-size: 0.9rem;
-        }
-        .sales-item .total-sale {
-            color: #ffcc00;
-            font-weight: bold;
-        }
-
-        .filter-btn {
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid #333;
-            background: #0a0a0a;
-            color: #aaa;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-        .filter-btn.active {
-            border-color: #00d4ff;
-            color: #fff;
-            background: #111;
-        }
-        .filter-btn:hover {
-            border-color: #00d4ff;
-            color: #fff;
+        .file-input-wrapper .btn-file:hover {
+            background: #777;
         }
 
         .logout-btn {
             background: #ff4444 !important;
             color: #fff !important;
             margin-top: 20px;
+            width: 100%;
         }
         .logout-btn:hover {
             box-shadow: 0 0 30px rgba(255, 68, 68, 0.3) !important;
@@ -322,61 +243,24 @@
             display: block;
         }
 
-        .search-box {
-            margin-bottom: 15px;
-        }
-        .search-box input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #333;
-            background: #0a0a0a;
-            color: #fff;
-            font-size: 1rem;
-        }
-
-        .file-input-wrapper {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-        }
-        .file-input-wrapper input[type="file"] {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-        .file-input-wrapper .btn-file {
-            background: #00d4ff;
-            color: #000;
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: none;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-
         @media (max-width: 600px) {
             .admin-panel {
                 padding: 15px;
             }
-            .info-cards {
-                flex-direction: column;
-            }
-            .order-item .header {
+            .product-item {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .product-edit-item {
-                flex-direction: column;
-                align-items: stretch;
+            .product-item .img-preview {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
             }
-            .tab-bar button {
-                min-width: 60px;
-                font-size: 0.7rem;
+            .product-item input {
+                min-width: 100%;
+            }
+            .product-item .btn-save {
+                width: 100%;
             }
         }
     </style>
@@ -384,7 +268,8 @@
 <body>
 
     <div class="admin-panel" id="adminPanel">
-        <h1>🔒 پنل مدیریت</h1>
+        <h1>🔧 پنل مدیریت محصولات</h1>
+        <p class="subtitle">برق یزدیان | ویرایش قیمت، موجودی، نام، نوع و عکس محصولات</p>
 
         <!-- ===== صفحه ورود ===== -->
         <div class="login-box" id="loginBox">
@@ -396,61 +281,20 @@
 
         <!-- ===== داشبورد ===== -->
         <div class="dashboard" id="dashboard">
-            <!-- کارت‌های اطلاعاتی -->
-            <div class="info-cards" id="infoCards">
-                <div class="info-card">
-                    <div class="number" id="pendingCount">۰</div>
-                    <div class="label">⏳ در انتظار تأیید</div>
-                </div>
-                <div class="info-card">
-                    <div class="number" id="confirmedCount">۰</div>
-                    <div class="label">✅ تأیید شده</div>
-                </div>
-                <div class="info-card">
-                    <div class="number" id="totalSales">۰</div>
-                    <div class="label">💰 کل فروش (تومان)</div>
-                </div>
-                <div class="info-card">
-                    <div class="number" id="totalStock">۰</div>
-                    <div class="label">📦 موجودی کل</div>
-                </div>
+            <!-- آمار -->
+            <div class="stats-card">
+                <div class="number" id="totalStock">۰</div>
+                <div class="label">📦 موجودی کل (تعداد قطعات)</div>
             </div>
 
-            <!-- تب‌ها -->
-            <div class="tab-bar">
-                <button class="active" data-tab="tabOrders" onclick="switchTab('tabOrders')">📋 سفارشات</button>
-                <button data-tab="tabProducts" onclick="switchTab('tabProducts')">🛠️ محصولات</button>
-                <button data-tab="tabSales" onclick="switchTab('tabSales')">📊 فروش</button>
+            <!-- جستجو -->
+            <div class="search-box">
+                <input type="text" id="searchProductAdmin" placeholder="جستجوی محصول..." onkeyup="filterProductsAdmin()">
             </div>
 
-            <!-- تب سفارشات -->
-            <div class="tab-content active" id="tabOrders">
-                <div id="ordersList">
-                    <!-- لیست سفارشات توسط جاوااسکریپت ساخته می‌شود -->
-                </div>
-            </div>
-
-            <!-- تب محصولات -->
-            <div class="tab-content" id="tabProducts">
-                <div class="search-box">
-                    <input type="text" id="searchProductAdmin" placeholder="جستجوی محصول..." onkeyup="filterProductsAdmin()">
-                </div>
-                <div id="productListAdmin">
-                    <!-- لیست محصولات توسط جاوااسکریپت ساخته می‌شود -->
-                </div>
-            </div>
-
-            <!-- تب فروش با فیلتر -->
-            <div class="tab-content" id="tabSales">
-                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
-                    <button class="filter-btn active" data-filter="today" onclick="setSalesFilter('today')">📅 امروز</button>
-                    <button class="filter-btn" data-filter="week" onclick="setSalesFilter('week')">📅 این هفته</button>
-                    <button class="filter-btn" data-filter="month" onclick="setSalesFilter('month')">📅 این ماه</button>
-                    <button class="filter-btn" data-filter="all" onclick="setSalesFilter('all')">📅 کل</button>
-                </div>
-                <div id="salesList">
-                    <!-- لیست فروش توسط جاوااسکریپت ساخته می‌شود -->
-                </div>
+            <!-- لیست محصولات -->
+            <div class="product-list" id="productListAdmin">
+                <!-- توسط جاوااسکریپت ساخته می‌شود -->
             </div>
 
             <button onclick="logout()" class="logout-btn">🚪 خروج از پنل</button>
@@ -466,11 +310,6 @@
         const ADMIN_PASSWORD = 'my2267123454321';
 
         // ============================================================
-        // 📦 متغیر فیلتر فروش
-        // ============================================================
-        let salesFilter = 'today';
-
-        // ============================================================
         // 💾 توابع خواندن و نوشتن در localStorage
         // ============================================================
         function loadProducts() {
@@ -481,32 +320,23 @@
             return [];
         }
 
-        function loadPendingOrders() {
-            const saved = localStorage.getItem('pendingOrders');
-            if (saved) {
-                try { return JSON.parse(saved); } catch (e) { return []; }
-            }
-            return [];
-        }
-
-        function loadSalesHistory() {
-            const saved = localStorage.getItem('salesHistory');
-            if (saved) {
-                try { return JSON.parse(saved); } catch (e) { return []; }
-            }
-            return [];
-        }
-
-        function savePendingOrders(orders) {
-            localStorage.setItem('pendingOrders', JSON.stringify(orders));
-        }
-
         function saveProducts(products) {
             localStorage.setItem('productData', JSON.stringify(products));
+            updateTotalStock(products);
         }
 
-        function saveSalesHistory(sales) {
-            localStorage.setItem('salesHistory', JSON.stringify(sales));
+        function getPlaceholderImage(name) {
+            return `https://placehold.co/300x200/1a1a1a/00d4ff?text=${encodeURIComponent(name)}`;
+        }
+
+        // ============================================================
+        // 📊 به‌روزرسانی موجودی کل
+        // ============================================================
+        function updateTotalStock(products) {
+            if (!products) products = loadProducts();
+            let total = 0;
+            products.forEach(p => total += p.count);
+            document.getElementById('totalStock').textContent = total.toLocaleString();
         }
 
         // ============================================================
@@ -517,8 +347,9 @@
             if (password === ADMIN_PASSWORD) {
                 document.getElementById('loginBox').style.display = 'none';
                 document.getElementById('dashboard').style.display = 'block';
-                checkExpiredOrders();
-                loadDashboard();
+                document.getElementById('loginError').classList.remove('show');
+                renderProductsAdmin(loadProducts());
+                updateTotalStock();
             } else {
                 document.getElementById('loginError').classList.add('show');
                 setTimeout(() => document.getElementById('loginError').classList.remove('show'), 3000);
@@ -535,185 +366,20 @@
         }
 
         // ============================================================
-        // ⏳ بررسی سفارشات منقضی‌شده (۴۸ ساعت)
-        // ============================================================
-        function checkExpiredOrders() {
-            const orders = loadPendingOrders();
-            const now = Date.now();
-            const EXPIRY_TIME = 48 * 60 * 60 * 1000;
-            let changed = false;
-
-            orders.forEach(order => {
-                if (order.status === 'pending' && (now - order.timestamp) > EXPIRY_TIME) {
-                    order.status = 'rejected';
-                    changed = true;
-                    const products = loadProducts();
-                    order.items.forEach(item => {
-                        const prod = products.find(p => p.name === item.name);
-                        if (prod) prod.count += item.qty;
-                    });
-                    saveProducts(products);
-                }
-            });
-
-            if (changed) {
-                savePendingOrders(orders);
-                showSuccess('⏳ سفارش‌های منقضی‌شده به‌روزرسانی شدند.');
-            }
-        }
-
-        // ============================================================
-        // 📊 بارگذاری داشبورد
-        // ============================================================
-        function loadDashboard() {
-            updateStats();
-            renderOrders();
-            renderProductsAdmin(loadProducts());
-            renderSales();
-        }
-
-        // ============================================================
-        // 📈 به‌روزرسانی آمار
-        // ============================================================
-        function updateStats() {
-            const orders = loadPendingOrders();
-            const sales = loadSalesHistory();
-            const products = loadProducts();
-
-            const pending = orders.filter(o => o.status === 'pending').length;
-            const confirmed = orders.filter(o => o.status === 'confirmed').length;
-            let totalSales = 0;
-            sales.forEach(s => totalSales += s.total);
-            let totalStock = 0;
-            products.forEach(p => totalStock += p.count);
-
-            document.getElementById('pendingCount').textContent = pending;
-            document.getElementById('confirmedCount').textContent = confirmed;
-            document.getElementById('totalSales').textContent = totalSales.toLocaleString();
-            document.getElementById('totalStock').textContent = totalStock.toLocaleString();
-        }
-
-        // ============================================================
-        // 📋 رندر سفارشات (مهم‌ترین بخش)
-        // ============================================================
-        function renderOrders() {
-            const container = document.getElementById('ordersList');
-            const orders = loadPendingOrders();
-
-            if (!orders || orders.length === 0) {
-                container.innerHTML = '<p style="text-align:center;color:#888;">هیچ سفارشی ثبت نشده است.</p>';
-                return;
-            }
-
-            let html = '';
-            orders.forEach((order, index) => {
-                const statusClass = order.status === 'pending' ? 'status-pending' :
-                    order.status === 'confirmed' ? 'status-confirmed' : 'status-rejected';
-                const statusText = order.status === 'pending' ? '⏳ در انتظار' :
-                    order.status === 'confirmed' ? '✅ تأیید شده' : '❌ رد شده';
-
-                const itemsText = order.items ? order.items.map(i => `${i.name} (${i.qty})`).join('، ') : '';
-
-                html += `
-                    <div class="order-item">
-                        <div class="header">
-                            <span><strong>🆔 سفارش:</strong> ${order.id}</span>
-                            <span><strong>💰 مبلغ:</strong> ${order.totalText || order.total.toLocaleString() + ' تومان'}</span>
-                            <span class="status ${statusClass}">${statusText}</span>
-                        </div>
-                        <div class="details">
-                            <div><strong>👤 مشتری:</strong> ${order.customer ? order.customer.name : 'نامشخص'}</div>
-                            <div><strong>📞 تلفن:</strong> ${order.customer ? order.customer.phone : 'ندارد'}</div>
-                            <div><strong>📍 آدرس:</strong> ${order.customer ? order.customer.address : 'ندارد'}</div>
-                            <div><strong>📦 محصولات:</strong> ${itemsText}</div>
-                            <div><strong>📅 تاریخ:</strong> ${new Date(order.timestamp).toLocaleString('fa-IR')}</div>
-                            ${order.status === 'pending' ? `
-                                <div class="actions">
-                                    <button class="btn-confirm" onclick="confirmOrder(${index})">✅ تأیید</button>
-                                    <button class="btn-reject" onclick="rejectOrder(${index})">❌ رد</button>
-                                </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-        }
-
-        // ============================================================
-        // ✅ تأیید سفارش
-        // ============================================================
-        function confirmOrder(index) {
-            const orders = loadPendingOrders();
-            if (index >= orders.length) return;
-
-            const order = orders[index];
-            if (order.status !== 'pending') {
-                showError('این سفارش قبلاً بررسی شده است.');
-                return;
-            }
-
-            order.status = 'confirmed';
-            savePendingOrders(orders);
-
-            const sales = loadSalesHistory();
-            sales.push({
-                id: order.id,
-                customer: order.customer,
-                items: order.items,
-                total: order.total,
-                totalText: order.totalText || order.total.toLocaleString() + ' تومان',
-                timestamp: Date.now()
-            });
-            saveSalesHistory(sales);
-
-            showSuccess('✅ سفارش تأیید شد و به فروش اضافه گردید.');
-            loadDashboard();
-        }
-
-        // ============================================================
-        // ❌ رد سفارش (بازگشت موجودی)
-        // ============================================================
-        function rejectOrder(index) {
-            const orders = loadPendingOrders();
-            if (index >= orders.length) return;
-
-            const order = orders[index];
-            if (order.status !== 'pending') {
-                showError('این سفارش قبلاً بررسی شده است.');
-                return;
-            }
-
-            order.status = 'rejected';
-            savePendingOrders(orders);
-
-            const products = loadProducts();
-            order.items.forEach(item => {
-                const prod = products.find(p => p.name === item.name);
-                if (prod) prod.count += item.qty;
-            });
-            saveProducts(products);
-
-            showSuccess('❌ سفارش رد شد و موجودی به انبار بازگردانده شد.');
-            loadDashboard();
-        }
-
-        // ============================================================
-        // 🛠️ مدیریت محصولات
+        // 📋 رندر محصولات
         // ============================================================
         function renderProductsAdmin(products) {
             const container = document.getElementById('productListAdmin');
             if (!products || products.length === 0) {
-                container.innerHTML = '<p style="text-align:center;color:#888;">محصولی یافت نشد.</p>';
+                container.innerHTML = '<p style="text-align:center;color:#888;padding:20px;">محصولی یافت نشد.</p>';
                 return;
             }
 
             let html = '';
             products.forEach((p, index) => {
-                const imgSrc = p.image || `https://placehold.co/300x200/1a1a1a/00d4ff?text=${encodeURIComponent(p.name)}`;
+                const imgSrc = p.image || getPlaceholderImage(p.name);
                 html += `
-                    <div class="product-edit-item" data-index="${index}">
+                    <div class="product-item" data-index="${index}">
                         <img src="${imgSrc}" alt="${p.name}" class="img-preview" id="preview-${index}">
                         <input type="text" id="pname-${index}" value="${p.name}" placeholder="نام">
                         <input type="text" id="ptype-${index}" value="${p.type || ''}" placeholder="نوع">
@@ -724,13 +390,17 @@
                             <button class="btn-file">📸 عکس</button>
                             <input type="file" accept="image/*" onchange="uploadImage(${index}, this)">
                         </div>
-                        <button onclick="saveProduct(${index})">💾 ذخیره</button>
+                        <button class="btn-save" onclick="saveProduct(${index})">💾 ذخیره</button>
                     </div>
                 `;
             });
+
             container.innerHTML = html;
         }
 
+        // ============================================================
+        // 📸 آپلود عکس
+        // ============================================================
         function uploadImage(index, input) {
             const file = input.files[0];
             if (!file) return;
@@ -747,6 +417,9 @@
             reader.readAsDataURL(file);
         }
 
+        // ============================================================
+        // 💾 ذخیره تغییرات محصول
+        // ============================================================
         function saveProduct(index) {
             const products = loadProducts();
             if (index >= products.length) return;
@@ -767,96 +440,27 @@
             products[index].price = price;
             products[index].priceText = priceText || price.toLocaleString() + ' تومان';
             products[index].count = count;
-            saveProducts(products);
 
-            showSuccess('✅ محصول با موفقیت به‌روز شد!');
+            saveProducts(products);
+            showSuccess(`✅ محصول "${name}" با موفقیت به‌روز شد!`);
             renderProductsAdmin(products);
-            updateStats();
         }
 
+        // ============================================================
+        // 🔍 جستجو
+        // ============================================================
         function filterProductsAdmin() {
             const query = document.getElementById('searchProductAdmin').value.trim().toLowerCase();
             const all = loadProducts();
-            if (query === '') { renderProductsAdmin(all); return; }
-            const filtered = all.filter(p => p.name.toLowerCase().includes(query) || p.type?.toLowerCase().includes(query));
-            renderProductsAdmin(filtered);
-        }
-
-        // ============================================================
-        // 📊 نمایش فروش با فیلتر
-        // ============================================================
-        function getFilteredSales() {
-            const sales = loadSalesHistory();
-            const now = new Date();
-            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-            const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay()).getTime();
-            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
-
-            return sales.filter(sale => {
-                if (salesFilter === 'today') return sale.timestamp >= today;
-                if (salesFilter === 'week') return sale.timestamp >= weekStart;
-                if (salesFilter === 'month') return sale.timestamp >= monthStart;
-                return true;
-            });
-        }
-
-        function setSalesFilter(filter) {
-            salesFilter = filter;
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.filter === filter) btn.classList.add('active');
-            });
-            renderSales();
-        }
-
-        function renderSales() {
-            const container = document.getElementById('salesList');
-            const filteredSales = getFilteredSales();
-
-            if (!filteredSales || filteredSales.length === 0) {
-                container.innerHTML = '<p style="text-align:center;color:#888;">هیچ فروشی در این بازه ثبت نشده است.</p>';
+            if (query === '') {
+                renderProductsAdmin(all);
                 return;
             }
-
-            let html = '';
-            let totalAll = 0;
-            filteredSales.forEach(s => {
-                totalAll += s.total;
-                const itemsText = s.items ? s.items.map(i => `${i.name} (${i.qty})`).join('، ') : '';
-                html += `
-                    <div class="sales-item">
-                        <div><strong>🆔 سفارش:</strong> ${s.id}</div>
-                        <div><strong>👤 مشتری:</strong> ${s.customer ? s.customer.name : 'نامشخص'}</div>
-                        <div><strong>📞 تلفن:</strong> ${s.customer ? s.customer.phone : 'ندارد'}</div>
-                        <div><strong>📦 محصولات:</strong> ${itemsText}</div>
-                        <div><strong>💰 مبلغ:</strong> <span class="total-sale">${s.totalText || s.total.toLocaleString() + ' تومان'}</span></div>
-                        <div><strong>📅 تاریخ:</strong> ${new Date(s.timestamp).toLocaleString('fa-IR')}</div>
-                    </div>
-                `;
-            });
-
-            const filterNames = { 'today': 'امروز', 'week': 'این هفته', 'month': 'این ماه', 'all': 'کل' };
-            container.innerHTML = `
-                <div style="background:#1a1a2a; padding:15px; border-radius:10px; border:1px solid #00d4ff; margin-bottom:15px;">
-                    <h3 style="color:#ffcc00;">💰 فروش ${filterNames[salesFilter] || 'کل'}: ${totalAll.toLocaleString()} تومان</h3>
-                    <p style="color:#888; font-size:0.8rem;">تعداد سفارشات: ${filteredSales.length} عدد</p>
-                </div>
-                ${html}
-            `;
-        }
-
-        // ============================================================
-        // 📑 تب‌ها
-        // ============================================================
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-bar button').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-
-            if (tabId === 'tabOrders') renderOrders();
-            if (tabId === 'tabProducts') renderProductsAdmin(loadProducts());
-            if (tabId === 'tabSales') renderSales();
+            const filtered = all.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                (p.type && p.type.toLowerCase().includes(query))
+            );
+            renderProductsAdmin(filtered);
         }
 
         // ============================================================
@@ -882,15 +486,17 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 const loginBox = document.getElementById('loginBox');
-                if (loginBox.style.display !== 'none') login();
+                if (loginBox.style.display !== 'none') {
+                    login();
+                }
             }
         });
 
         // ============================================================
         // 🚀 اجرای اولیه
         // ============================================================
-        console.log('پنل ادمین برق یزدیان بارگذاری شد.');
+        console.log('پنل مدیریت محصولات برق یزدیان بارگذاری شد.');
     </script>
 
 </body>
-                        </html>
+</html>
