@@ -1,348 +1,1753 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>جورچین · انتگرال عددی با مثال تشریحی</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ============================================================
+    تگ‌های سئو (SEO) برای گوگل
+    ============================================================ -->
+    <title>فروشگاه برق یزدیان | خرید قطعات الکترونیک، آردوینو و ماژول</title>
+    <meta name="description" content="فروشگاه تخصصی برق یزدیان با بیش از ۱۵۰ نوع قطعه الکترونیکی، آردوینو، ماژول، ترانزیستور و آی‌سی. ارسال به سراسر ایران با پست.">
+    <meta name="keywords" content="فروشگاه برق, قطعات الکترونیک, آردوینو, ماژول, ترانزیستور, آی‌سی, فروشگاه برق یزدیان, خرید الکترونیک">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://r19956522-commits.github.io/">
+    <meta property="og:title" content="فروشگاه برق یزدیان | خرید قطعات الکترونیک">
+    <meta property="og:description" content="بیش از ۱۵۰ قطعه الکترونیکی با قیمت مناسب. ارسال به سراسر ایران.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://r19956522-commits.github.io/">
+    <meta property="og:image" content="https://r19956522-commits.github.io/images/InShot_20260825_135547342.jpg">
+
+    <!-- داده‌های ساختاریافته (Schema) برای گوگل -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "برق یزدیان",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "تهران، خیابان ولیعصر، نرسیده به میدان تجریش، پلاک ۱۲۳",
+            "addressLocality": "تهران",
+            "addressCountry": "IR"
+        },
+        "telephone": "09108580755",
+        "url": "https://r19956522-commits.github.io/"
+    }
     </script>
+
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Vazir','Segoe UI',Tahoma,sans-serif; }
-        body { min-height:100vh; background:#0b0e14; display:flex; justify-content:center; align-items:center; padding:20px; }
-        .container { max-width:800px; width:100%; background:#1a1f2a; padding:40px 35px; border-radius:28px; border:1px solid #2f3748; text-align:center; }
-        .logo { font-size:3.2rem; font-weight:900; color:#6c8cff; animation:pulseGlow 2s ease-in-out infinite alternate; text-shadow:0 0 20px rgba(108,140,255,0.3); }
-        .logo span { color:#e8edf5; }
-        @keyframes pulseGlow { 0% { transform:scale(1); } 100% { transform:scale(1.05); text-shadow:0 0 40px rgba(108,140,255,0.6); } }
-        .sub { color:#8892a8; margin-top:6px; border-bottom:1px solid #2c3445; padding-bottom:18px; }
-        .info { color:#bcc3d4; margin:25px 0 15px; font-size:0.95rem; line-height:1.8; }
-        .info strong { color:#6c8cff; }
-        .btn { width:100%; padding:18px; border:none; border-radius:40px; font-weight:700; font-size:1.2rem; cursor:pointer; background:#6c8cff; color:#fff; box-shadow:0 6px 18px rgba(108,140,255,0.3); transition:0.25s; margin-top:10px; }
-        .btn:hover { background:#5a7ae6; transform:scale(1.02); }
-        .btn:disabled { opacity:0.5; pointer-events:none; }
-        #status { margin-top:20px; color:#6c8cff; min-height:28px; font-size:0.95rem; }
-        .download-section { display:none; margin-top:25px; border-top:1px solid #252d3d; padding-top:20px; }
-        .download-section p { color:#bcc3d4; margin-bottom:12px; }
-        .btn-success { background:#34d399; color:#0b0e14; width:auto; padding:12px 36px; display:inline-block; font-size:1rem; }
-        .btn-success:hover { background:#2bc48a; }
-        .footer { margin-top:30px; color:#5e6a82; font-size:0.85rem; border-top:1px solid #252d3d; padding-top:18px; }
-        .footer strong { color:#bcc3d4; }
-        @media (max-width:500px) { .container { padding:25px 18px; } .logo { font-size:2.4rem; } }
+        /* ===== تنظیمات کلی ===== */
+        :root {
+            --primary-color: #00d4ff;
+            --bg-dark: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text-color: #e0e0e0;
+            --success: #1e8b3c;
+            --gold: #ffcc00;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===== بنر کپی‌رایت ===== */
+        .copyright-banner {
+            background: #2a0a0a;
+            border-bottom: 2px solid #ff4444;
+            padding: 12px 20px;
+            text-align: center;
+            position: relative;
+            font-size: 0.9rem;
+            color: #ff8888;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .copyright-banner .close-btn {
+            background: none;
+            border: none;
+            color: #ff4444;
+            font-size: 1.3rem;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0 10px;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .copyright-banner .close-btn:hover { color: #ff8888; }
+
+        /* ===== هدر ===== */
+        .header {
+            background: #111;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header .shop-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        .header .shop-name small {
+            font-size: 0.9rem;
+            color: #aaa;
+            display: block;
+        }
+        .header .shop-id {
+            background: #1a1a1a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            user-select: text;
+            cursor: text;
+        }
+
+        /* ===== هیرو ===== */
+        .hero-section {
+            height: 35vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.15;
+        }
+        .electric-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            height: 2px;
+            width: 100%;
+            opacity: 0.3;
+            animation: flow 5s infinite linear;
+        }
+        @keyframes flow { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        .hero-text {
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+        .hero-text p { font-size: 1.2rem; opacity: 0.8; }
+
+        /* ===== معرفی فروشگاه ===== */
+        .shop-intro {
+            padding: 40px 20px;
+            background: #111;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .shop-intro h2 { color: var(--primary-color); margin-bottom: 20px; }
+        .shop-intro .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .shop-intro .content .image-box { flex: 1; min-width: 250px; }
+        .shop-intro .content .image-box svg {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+            border: 1px solid #333;
+            background: #1a1a1a;
+            display: block;
+        }
+        .shop-intro .content .info-box { flex: 1; min-width: 250px; text-align: right; }
+        .shop-intro .content .info-box h3 { color: var(--primary-color); font-size: 1.5rem; }
+        .shop-intro .content .info-box p { margin: 10px 0; }
+        .shop-intro .content .info-box .copyable {
+            user-select: text;
+            cursor: text;
+            background: #1a1a1a;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px dashed #555;
+            display: inline-block;
+            font-family: monospace;
+        }
+        .copy-btn {
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .copy-btn:hover { opacity: 0.8; }
+
+        /* ===== عکس مدیر فروشگاه ===== */
+        .manager-section {
+            background: #0d0d1a;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .manager-section .manager-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+        }
+        .manager-section .manager-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .manager-section .manager-card h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        .manager-section .manager-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ===== کانال رضایت مشتریان در ایتا ===== */
+        .channel-section {
+            background: #0a1a0a;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .channel-section .channel-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid var(--gold);
+        }
+        .channel-section .channel-box h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .channel-section .channel-box p {
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        .channel-section .channel-box .channel-id {
+            background: #0a0a0a;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px dashed var(--gold);
+            display: inline-block;
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--gold);
+            user-select: text;
+            cursor: text;
+        }
+
+        /* ===== جستجو ===== */
+        .search-section {
+            padding: 30px 20px;
+            background: #0f0f0f;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        .search-section input {
+            width: 80%;
+            max-width: 600px;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 2px solid #333;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-section input:focus { border-color: var(--primary-color); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
+        .search-section input::placeholder { color: #777; }
+        .search-hint {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* ===== درباره ما ===== */
+        .about-us {
+            display: none;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        .about-us.show { display: block; }
+        .about-us h2 { color: var(--primary-color); }
+
+        /* ===== محصولات ===== */
+        .container { padding: 40px 20px; max-width: 1400px; margin: auto; }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background: var(--card-bg);
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.15);
+        }
+        .product-card img {
+            width: 100%;
+            max-height: 120px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #0a0a0a;
+            padding: 5px;
+            margin-bottom: 8px;
+        }
+        .product-card h3 {
+            font-size: 1rem;
+            margin: 4px 0;
+            color: #fff;
+            font-weight: 600;
+        }
+        .product-card .type {
+            font-size: 0.75rem;
+            color: #aaa;
+            margin-bottom: 3px;
+        }
+        .product-card .stock-info {
+            font-size: 0.8rem;
+            color: #aaa;
+            margin: 2px 0;
+        }
+        .product-card .stock-info span { color: var(--primary-color); font-weight: bold; }
+        .product-card .stock-badge {
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin: 4px 0;
+        }
+        .product-card .stock-badge.available { background: var(--success); color: #fff; }
+        .product-card .stock-badge.unavailable { background: #8b1e1e; color: #fff; }
+        .product-card .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 4px 0;
+            font-size: 0.9rem;
+        }
+        .product-card .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0;
+        }
+        .product-card .qty-selector input {
+            width: 50px;
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .product-card .add-to-cart {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 4px;
+            font-size: 0.8rem;
+        }
+        .product-card .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+        }
+
+        /* ===== سبد خرید ===== */
+        .cart-section {
+            background: #111;
+            padding: 30px 20px;
+            border-top: 2px solid var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            text-align: center;
+        }
+        .cart-section h2 { color: var(--primary-color); margin-bottom: 15px; }
+
+        /* فرم آدرس */
+        .address-form {
+            max-width: 500px;
+            margin: 0 auto 20px;
+            text-align: right;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+        .address-form label {
+            display: block;
+            margin: 8px 0 4px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        .address-form input, .address-form textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 0.95rem;
+            direction: rtl;
+        }
+        .address-form textarea { height: 60px; resize: vertical; }
+        .address-form .required { color: #ff6666; margin-right: 2px; }
+
+        .cart-items {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            text-align: right;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 15px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        .cart-item .remove-btn {
+            background: #8b1e1e;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            margin-right: 8px;
+        }
+        .cart-item .remove-btn:hover { background: #cc3333; }
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 15px 0;
+        }
+        .cart-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cart-actions button {
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cart-actions .clear-btn {
+            background: #555;
+            color: #fff;
+        }
+        .cart-actions .clear-btn:hover { background: #777; }
+        .cart-actions .checkout-btn {
+            background: var(--gold);
+            color: #000;
+        }
+        .cart-actions .checkout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
+        }
+
+        /* ===== پیام پرداخت و فاکتور ===== */
+        .payment-message {
+            display: none;
+            background: #1a3a1a;
+            border: 2px solid #44ff44;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 650px;
+            color: #88ff88;
+            text-align: center;
+            direction: rtl;
+        }
+        .payment-message.show { display: block; }
+        .payment-message .card-number {
+            background: #0a0a0a;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--gold);
+            direction: ltr;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            border: 1px solid var(--gold);
+            user-select: text;
+            cursor: text;
+        }
+        .payment-message .invoice-box {
+            background: #0a0a0a;
+            border: 1px solid #555;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: right;
+            color: #ddd;
+            direction: rtl;
+        }
+        .payment-message .invoice-box table {
+            width: 100%;
+            border-collapse: collapse;
+            direction: rtl;
+            font-size: 0.9rem;
+        }
+        .payment-message .invoice-box th, .payment-message .invoice-box td {
+            padding: 6px 12px;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+        .payment-message .invoice-box th {
+            color: var(--primary-color);
+        }
+        .payment-message .invoice-box .total-row {
+            font-weight: bold;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .payment-message .print-btn {
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 10px 0;
+        }
+        .payment-message .print-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+        .payment-message .shipping-condition {
+            background: #2a1a0a;
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 15px 0;
+            color: #ffdd99;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        .payment-message .shipping-condition strong {
+            color: var(--gold);
+        }
+        .payment-message .guide-text {
+            background: #1a1a2a;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 15px 0;
+            color: #aaddff;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        .payment-message .guide-text a {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ===== فاکتور Overlay ===== */
+        .invoice-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            overflow-y: auto;
+        }
+        .invoice-overlay.active {
+            display: flex;
+        }
+        .invoice-overlay .invoice-card {
+            background: #1a1a1a;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 20px 18px;
+            max-width: 520px;
+            width: 100%;
+            max-height: 95vh;
+            overflow-y: auto;
+            color: #ddd;
+            direction: rtl;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.25);
+            position: relative;
+            margin: auto;
+        }
+        .invoice-overlay .invoice-card h2 {
+            color: var(--primary-color);
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .invoice-overlay .invoice-card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.85rem;
+        }
+        .invoice-overlay .invoice-card th,
+        .invoice-overlay .invoice-card td {
+            padding: 5px 6px;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+        .invoice-overlay .invoice-card th {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .invoice-overlay .invoice-card .total-row td {
+            font-weight: bold;
+            color: var(--gold);
+            font-size: 1rem;
+            border-top: 2px solid var(--gold);
+        }
+        .invoice-overlay .invoice-card .condition-box {
+            background: #2a1a0a;
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0;
+            color: #ffdd99;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .invoice-overlay .invoice-card .condition-box strong {
+            color: var(--gold);
+        }
+        .invoice-overlay .invoice-card .address-box {
+            background: #0a1a2a;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0;
+            color: #aaddff;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .invoice-overlay .invoice-card .address-box strong {
+            color: var(--primary-color);
+        }
+        .invoice-overlay .invoice-card .guide-box {
+            background: #1a1a2a;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 12px 0;
+            color: #aaddff;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .invoice-overlay .invoice-card .guide-box a {
+            color: var(--gold);
+            font-weight: bold;
+        }
+        .invoice-overlay .invoice-card .close-invoice {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #555;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+        .invoice-overlay .invoice-card .close-invoice:hover {
+            background: #777;
+        }
+        .invoice-overlay .invoice-card .card-number-box {
+            background: #0a0a0a;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--gold);
+            direction: ltr;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            border: 1px solid var(--gold);
+            text-align: center;
+            user-select: text;
+            cursor: text;
+        }
+        .invoice-overlay .invoice-card .emphasis {
+            background: #1a3a1a;
+            border: 2px solid #44ff44;
+            border-radius: 12px;
+            padding: 14px;
+            margin: 12px 0;
+            color: #88ff88;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* ===== بخش امنیت ===== */
+        .security-section {
+            background: #0d0d1a;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            text-align: center;
+        }
+        .security-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .security-section .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            text-align: right;
+            line-height: 2;
+        }
+        .security-section .content ul {
+            list-style: none;
+            padding-right: 10px;
+        }
+        .security-section .content ul li::before {
+            content: "✅ ";
+            color: var(--gold);
+        }
+        .security-section .content .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ===== روش‌های ارسال ===== */
+        .shipping {
+            background: #111;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+        .shipping h2 { color: var(--primary-color); margin-bottom: 20px; }
+        .shipping .info-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            text-align: right;
+            color: #ddd;
+            line-height: 2;
+        }
+        .shipping .info-box strong {
+            color: var(--gold);
+        }
+        .shipping .info-box .highlight {
+            color: var(--primary-color);
+        }
+
+        /* ===== فوتر ===== */
+        .footer {
+            background: #0a0a0a;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 2px solid var(--primary-color);
+            color: #aaa;
+        }
+        .footer .thankyou {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .footer .qr-code {
+            margin: 15px 0;
+        }
+        .footer .qr-code img {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            border: 2px solid var(--primary-color);
+            padding: 5px;
+            background: #fff;
+        }
+        .footer .qr-code p {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        .footer small { display: block; margin-top: 10px; color: #555; }
+
+        /* ===== دکمه شناور ===== */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            z-index: 1000;
+            font-size: 30px;
+            transition: 0.3s;
+            border: none;
+            color: #000;
+        }
+        .floating-btn:hover { transform: scale(1.1) rotate(15deg); }
+
+        /* ===== پنل تماس ===== */
+        .contact-panel {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            background: var(--card-bg);
+            width: 280px;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-color);
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            animation: slideIn 0.4s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .contact-panel.show { display: flex; }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            background: #252525;
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+        .contact-item:hover { background: #333; color: var(--primary-color); }
+        .contact-item span:first-child { font-size: 1.3rem; }
+        .contact-item .copyable-text {
+            user-select: text;
+            cursor: text;
+            font-family: monospace;
+            background: #0a0a0a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px dashed #555;
+        }
+
+        /* ===== کلاس کمکی ===== */
+        .copyable {
+            user-select: text !important;
+            cursor: text !important;
+        }
+        .copy-btn {
+            background: var(--primary-color);
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .copy-btn:hover { opacity: 0.8; }
+
+        /* ===== ریسپانسیو ===== */
+        @media (max-width: 600px) {
+            .header .shop-name { font-size: 1.3rem; }
+            .hero-text h1 { font-size: 2rem; }
+            .shop-intro .content { flex-direction: column; }
+            .copyright-banner { font-size: 0.8rem; padding: 10px; }
+            .copyright-banner .close-btn { position: static; transform: none; }
+            .invoice-overlay .invoice-card { padding: 15px; }
+            .invoice-overlay .invoice-card table { font-size: 0.75rem; }
+            .invoice-overlay .invoice-card th, 
+            .invoice-overlay .invoice-card td { padding: 4px 5px; }
+            .contact-panel { width: 90%; left: 5%; bottom: 80px; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .manager-section .manager-card img { width: 120px; height: 120px; }
+            .footer .qr-code img { width: 120px; height: 120px; }
+            .address-form { padding: 15px; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- ===== بنر کپی‌رایت ===== -->
+    <div class="copyright-banner" id="copyrightBanner">
+        <span>⚠️ هر گونه کپی برداری از سایت شرعا حرام و پیگرد قانونی دارد.</span>
+        <button class="close-btn" onclick="document.getElementById('copyrightBanner').style.display='none'">✕</button>
+    </div>
+
+    <!-- ===== هدر ===== -->
+    <header class="header">
+        <div class="shop-name">
+            ⚡ برق یزدیان
+            <small>دنیای الکترونیک</small>
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <span class="shop-id">🏷️ شماره فروشگاه: ۳۷۱۸۹۴۵۰</span>
+            <span style="color: var(--primary-color);">📞 ۰۹۱۰۸۵۸۰۷۵۵</span>
+        </div>
+    </header>
+
+    <!-- ===== هیرو ===== -->
+    <section class="hero-section">
+        <div class="electric-line" style="top: 20%;"></div>
+        <div class="electric-line" style="top: 50%;"></div>
+        <div class="electric-line" style="top: 80%;"></div>
+        <div class="hero-text">
+            <h1>فروشگاه تخصصی برق یزدیان | مرکز خرید قطعات الکترونیک</h1>
+            <p>کیفیت، قدرت و ایمنی در جریان برق</p>
+        </div>
+    </section>
+
+    <!-- ===== معرفی فروشگاه ===== -->
+    <section class="shop-intro">
+        <h2>فروشگاه برق یزدیان | بیش از ۱۵۰ قطعه الکترونیکی موجود</h2>
+        <div class="content">
+            <div class="image-box">
+                <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="250" fill="#0a0a0a" rx="15"/>
+                    <rect x="50" y="80" width="300" height="150" fill="#1a1a1a" stroke="#00d4ff" stroke-width="2" rx="5"/>
+                    <polygon points="40,80 200,30 360,80" fill="#222" stroke="#00d4ff" stroke-width="2"/>
+                    <rect x="170" y="160" width="60" height="70" fill="#111" stroke="#00d4ff" stroke-width="2" rx="5"/>
+                    <circle cx="220" cy="195" r="4" fill="#00d4ff"/>
+                    <rect x="70" y="100" width="40" height="40" fill="#0a0a0a" stroke="#00d4ff" stroke-width="1.5" rx="3"/>
+                    <rect x="140" y="100" width="40" height="40" fill="#0a0a0a" stroke="#00d4ff" stroke-width="1.5" rx="3"/>
+                    <rect x="220" y="100" width="40" height="40" fill="#0a0a0a" stroke="#00d4ff" stroke-width="1.5" rx="3"/>
+                    <rect x="290" y="100" width="40" height="40" fill="#0a0a0a" stroke="#00d4ff" stroke-width="1.5" rx="3"/>
+                    <rect x="100" y="130" width="200" height="30" fill="#00d4ff" rx="5" opacity="0.9"/>
+                    <text x="200" y="151" font-family="Tahoma, sans-serif" font-size="16" fill="#000" font-weight="bold" text-anchor="middle">برق یزدیان</text>
+                    <text x="200" y="225" font-size="20" fill="#ffea00" text-anchor="middle">⚡</text>
+                    <text x="200" y="245" font-size="10" fill="#aaa" text-anchor="middle">دنیای الکترونیک</text>
+                </svg>
+            </div>
+            <div class="info-box">
+                <h3>برق یزدیان</h3>
+                <p><strong>آدرس:</strong> تهران، خیابان ولیعصر، نرسیده به میدان تجریش، پلاک ۱۲۳</p>
+                <p><strong>ساعت کاری:</strong> شنبه تا پنجشنبه ۹ الی ۲۰</p>
+                <p><strong>تلفن:</strong> <span class="copyable">۰۹۱۰۸۵۸۰۷۵۵</span>
+                    <button class="copy-btn" onclick="copyText('۰۹۱۰۸۵۸۰۷۵۵')">کپی</button>
+                </p>
+                <p><strong>شماره فروشگاه:</strong> <span class="copyable">۳۷۱۸۹۴۵۰</span>
+                    <button class="copy-btn" onclick="copyText('۳۷۱۸۹۴۵۰')">کپی</button>
+                </p>
+                <p><strong>آیدی ایتا:</strong> <span class="copyable">yazdian2@</span>
+                    <button class="copy-btn" onclick="copyText('yazdian2@')">کپی</button>
+                </p>
+                <p style="color: var(--primary-color);">⭐ ارائه انواع قطعات الکترونیکی، ماژول‌ها، آردوینو، باتری، موتور، سنسور و...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== عکس مدیر فروشگاه ===== -->
+    <section class="manager-section">
+        <div class="manager-card">
+            <img src="images/InShot_20260825_135547342.jpg" alt="مدیر فروشگاه برق یزدیان - مهندس محمدرسول یزدیان">
+            <h3>جناب مهندس محمدرسول یزدیان</h3>
+            <p>مدیر فروشگاه برق یزدیان</p>
+            <p style="font-size:0.8rem; color:#888; margin-top:5px;">با بیش از ۱۰ سال سابقه در حوزه الکترونیک</p>
+        </div>
+    </section>
+
+    <!-- ===== کانال رضایت مشتریان در ایتا ===== -->
+    <section class="channel-section">
+        <div class="channel-box">
+            <h3>📢 کانال رضایت مشتریان</h3>
+            <p>برای اطلاع از آخرین تخفیف‌ها، محصولات جدید و مشاوره رایگان، حتماً در کانال ایتا ما عضو شوید.</p>
+            <div>
+                <span class="channel-id" id="channelId">@electro_satisfaction</span>
+                <button class="copy-btn" onclick="copyText('@electro_satisfaction')">کپی</button>
+            </div>
+            <p style="font-size:0.8rem; color:#888; margin-top:10px;">🔹 تمامی خریداران محترم عضو کانال شوند تا از خدمات ویژه بهره‌مند گردند.</p>
+        </div>
+    </section>
+
+    <!-- ===== جستجو ===== -->
+    <section class="search-section">
+        <input type="text" id="searchInput" placeholder="جستجوی قطعه (مثلاً BC547، درباره ما، ...)" onkeyup="searchProducts()">
+        <div class="search-hint" id="searchHint">🔍 بیش از ۱۵۰ قطعه مختلف در فروشگاه موجود است.</div>
+        <div id="aboutUs" class="about-us">
+            <h2>📖 درباره ما</h2>
+            <p>فروشگاه <strong>برق یزدیان</strong> با بیش از ۱۰ سال سابقه در زمینه توزیع قطعات الکترونیکی و تجهیزات برق صنعتی، همواره سعی در ارائه محصولات با کیفیت و قیمت مناسب داشته است. ما با بهره‌گیری از کارشناسان مجرب، مشاوره فنی رایگان به مشتریان ارائه می‌دهیم.</p>
+            <p>هدف ما جلب رضایت شما و ایجاد ارتباطی پایدار است.</p>
+        </div>
+    </section>
+
+    <!-- ===== محصولات ===== -->
     <div class="container">
-        <div class="logo">▎<span>جورچین</span></div>
-        <div class="sub">انتگرال عددی با <small>مثال تشریحی گام‌به‌گام</small></div>
-        <div class="info">
-            <strong>محمدرسول یزدیان</strong> · برنامه‌نویس و بنیان‌گذار<br />
-            این سایت یک پاورپوینت ۴۰ اسلایدی با تابع <strong>f(x) = x²</strong> در بازه‌ی <strong>[0, 2]</strong> (مقدار دقیق ۸/۳ ≈ ۲.۶۶۶۷) تولید می‌کند.
+        <h2 style="text-align: center; margin-bottom: 10px;">🛒 قطعات موجود در انبار</h2>
+        <p style="text-align: center; color: #aaa; font-size: 0.9rem;">تعداد مورد نظر را انتخاب کنید و به سبد خرید اضافه کنید</p>
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+
+    <!-- ===== سبد خرید ===== -->
+    <section class="cart-section" id="cartSection">
+        <h2>🛍️ سبد خرید شما</h2>
+
+        <!-- فرم آدرس مشتری -->
+        <div class="address-form" id="addressForm">
+            <h3 style="color: var(--primary-color); margin-bottom: 10px; text-align: center;">📍 اطلاعات ارسال</h3>
+            <label>نام و نام خانوادگی <span class="required">*</span></label>
+            <input type="text" id="customerName" placeholder="نام و نام خانوادگی خود را وارد کنید">
+
+            <label>شماره تماس <span class="required">*</span></label>
+            <input type="tel" id="customerPhone" placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+
+            <label>آدرس کامل (استان، شهر، خیابان، کوچه، پلاک، واحد) <span class="required">*</span></label>
+            <textarea id="customerAddress" placeholder="آدرس کامل خود را وارد کنید"></textarea>
+
+            <label>کد پستی <span class="required">*</span></label>
+            <input type="text" id="customerPostalCode" placeholder="کد پستی ۱۰ رقمی">
         </div>
-        <button class="btn" id="buildBtn">📥 ساخت پاورپوینت با مثال تشریحی</button>
-        <div id="status">✅ آماده‌ی ساخت ...</div>
-        <div class="download-section" id="downloadSection">
-            <p>✅ پاورپوینت ساخته شد!</p>
-            <button class="btn btn-success" id="downloadBtn">⬇️ دانلود فایل PPTX</button>
+
+        <div id="cartItems" class="cart-items">
+            <p style="color: #888;">هنوز محصولی به سبد خرید اضافه نشده است.</p>
         </div>
-        <div class="footer"><strong>محمدرسول یزدیان</strong> · تمامی حقوق محفوظ است · جورچین ۱۴۰۴</div>
+        <div class="cart-total" id="cartTotal">جمع کل: ۰ تومان</div>
+        <div class="cart-actions">
+            <button class="clear-btn" onclick="clearCart()">🗑️ خالی کردن سبد</button>
+            <button class="checkout-btn" onclick="checkout()">✅ ثبت سفارش و پرداخت</button>
+        </div>
+
+        <div class="payment-message" id="paymentMessage">
+            <h3 style="color: var(--gold);">🧾 فاکتور خرید شما</h3>
+            <div class="invoice-box" id="invoiceBox"></div>
+            <div class="card-number">۵۸۵۹۸۳۱۸۲۳۴۶۵۶۹۴</div>
+            <p style="color: #aaa; font-size: 0.9rem;">به نام: محمدرسول یزدیان</p>
+            <div class="shipping-condition">
+                <strong>📦 شرط ارسال:</strong><br>
+                ارسال <strong>پیامک واریزی</strong>، <strong>عکس فاکتور نهایی</strong> و <strong>آدرس دقیق (شهر، خیابان، کوچه، پلاک)</strong> به آیدی 
+                <strong>yazdian2@</strong> در ایتا الزامی است.
+            </div>
+            <div class="guide-text">
+                <p>📌 پس از واریز، عکس فاکتور، عکس پیامک واریزی و آدرس کامل خود را به آیدی 
+                <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> 
+                در ایتا ارسال کنید تا کالا برای شما ارسال شود.</p>
+                <p>⏳ زمان ارسال: <strong>حداکثر ۵ روز کاری</strong>.</p>
+            </div>
+            <button class="print-btn" onclick="showInvoiceInPage()">📄 دریافت فاکتور و کاهش موجودی</button>
+            <br>
+            <button onclick="document.getElementById('paymentMessage').classList.remove('show')" style="margin-top:10px; padding:8px 25px; border-radius:20px; border:none; background:#555; color:#fff; cursor:pointer;">✕ بستن</button>
+        </div>
+    </section>
+
+    <!-- ===== فاکتور Overlay ===== -->
+    <div class="invoice-overlay" id="invoiceOverlay">
+        <div class="invoice-card" id="invoiceCard"></div>
+    </div>
+
+    <!-- ===== بخش امنیت ===== -->
+    <section class="security-section">
+        <h2>🔒 امنیت و شفافیت</h2>
+        <div class="content">
+            <p><span class="highlight">چرا این روش طراحی شده؟</span></p>
+            <ul>
+                <li><strong>عدم ذخیره‌سازی اطلاعات کارت در سایت</strong> – هیچ اطلاعات بانکی شما در سرور ما ذخیره نمی‌شود.</li>
+                <li><strong>مدرک واریزی معتبر</strong> – با ارسال عکس فاکتور و پیامک واریزی، یک مدرک محکم و غیرقابل انکار نزد هر دو طرف باقی می‌ماند.</li>
+                <li><strong>شفافیت کامل</strong> – شما می‌توانید کل فرایند خرید تا ارسال را پیگیری کنید و هیچ ابهامی وجود ندارد.</li>
+                <li><strong>امنیت بیشتر نسبت به سایت‌های معمولی</strong> – بسیاری از سایت‌ها اطلاعات کارت را در سرور خود ذخیره می‌کنند که خطر نفوذ دارد، اما در این روش اطلاعات حساس مستقیماً از طریق پیام‌رسان امن (ایتا) رد و بدل می‌شود.</li>
+                <li><strong>پشتیبانی سریع و مستقیم</strong> – شما مستقیماً با فروشنده در ارتباط هستید و نیازی به واسطه ندارید.</li>
+            </ul>
+            <p style="margin-top: 15px; color: #aaa;">این روش طراحی شده تا <span class="highlight">همه چیز شفاف، امن و قابل پیگیری</span> باشد و خیال شما از بابت خرید آسوده باشد.</p>
+        </div>
+    </section>
+
+    <!-- ===== روش‌های ارسال ===== -->
+    <section class="shipping">
+        <h2>📦 روش‌های ارسال</h2>
+        <div class="info-box">
+            <p><strong>📌 هزینه ارسال به عهده مشتری است.</strong></p>
+            <p>بسته‌ها هر <span class="highlight">۳ روز کاری</span> یکبار به اداره پست تحویل داده می‌شوند.</p>
+            <p>🔹 پس از ارسال، <strong>کد مرسوله</strong> در <strong>کانال ایتا</strong> فروشگاه قرار می‌گیرد و شما می‌توانید با استفاده از آن، وضعیت بسته خود را پیگیری کنید.</p>
+            <p style="margin-top: 10px; color: #888;">👉 برای دریافت کد مرسوله، حتماً در کانال ایتا عضو شوید:  
+                <span class="copyable">@electro_satisfaction</span>
+                <button class="copy-btn" onclick="copyText('@electro_satisfaction')">کپی</button>
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== فوتر ===== -->
+    <footer class="footer">
+        <div class="thankyou">🙏 از خرید شما متشکریم</div>
+        <div class="qr-code">
+            <img src="images/Screenshot_2023-01-11 14:45_DeepSeek.jpg" alt="QR Code فروشگاه برق یزدیان - اسکن کنید و وارد فروشگاه شوید">
+            <p>📱 اسکن کنید | فروشگاه برق یزدیان</p>
+        </div>
+        <p style="color: #888;">برق یزدیان | ارائه‌دهنده قطعات الکترونیکی با کیفیت</p>
+        <small>© ۱۴۰۴ - تمامی حقوق محفوظ است.</small>
+    </footer>
+
+    <!-- ===== دکمه شناور ===== -->
+    <button class="floating-btn" onclick="toggleContact()">⚡</button>
+
+    <!-- ===== پنل تماس ===== -->
+    <div class="contact-panel" id="contactPanel">
+        <h3 style="margin: 0 0 10px 0; text-align: center;">💬 ارتباط با ما</h3>
+        <a href="https://eitaa.com/yazdian2" target="_blank" class="contact-item">
+            <span>💬</span>
+            <span>ایتا: <span class="copyable-text">yazdian2@</span></span>
+            <button class="copy-btn" onclick="copyText('yazdian2@'); event.stopPropagation();">کپی</button>
+        </a>
+        <a href="tel:09108580755" class="contact-item">
+            <span>📞</span>
+            <span>تلفن: <span class="copyable-text">۰۹۱۰۸۵۸۰۷۵۵</span></span>
+            <button class="copy-btn" onclick="copyText('۰۹۱۰۸۵۸۰۷۵۵'); event.stopPropagation();">کپی</button>
+        </a>
+        <div class="contact-item" style="cursor:default;">
+            <span>🏷️</span>
+            <span>شماره فروشگاه: <span class="copyable-text">۳۷۱۸۹۴۵۰</span></span>
+            <button class="copy-btn" onclick="copyText('۳۷۱۸۹۴۵۰'); event.stopPropagation();">کپی</button>
+        </div>
+        <div class="contact-item" style="cursor:default;">
+            <span>📢</span>
+            <span>کانال ایتا: <span class="copyable-text">@electro_satisfaction</span></span>
+            <button class="copy-btn" onclick="copyText('@electro_satisfaction'); event.stopPropagation();">کپی</button>
+        </div>
+        <p style="font-size: 0.7rem; text-align: center; color: #888; margin-top: 10px;">
+            برای مشاوره و ثبت سفارش پیام دهید
+        </p>
     </div>
 
     <script>
-        (function() {
-            "use strict";
-
-            const statusDiv = document.getElementById('status');
-            const buildBtn = document.getElementById('buildBtn');
-            const downloadSection = document.getElementById('downloadSection');
-            const downloadBtn = document.getElementById('downloadBtn');
-
-            let lastBlob = null;
-            let lastFileName = '';
-
-            function setStatus(msg, isError = false) {
-                statusDiv.textContent = msg;
-                statusDiv.style.color = isError ? '#ff7a7a' : '#6c8cff';
+        // ============================================================
+        // توابع کمکی (کپی، پیام، تولید عکس placeholder)
+        // ============================================================
+        function copyText(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast('✅ کپی شد: ' + text);
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
             }
+        }
 
-            // ============================================================
-            // 1. محتوای اسلایدها با مثال‌های تشریحی کامل
-            // ============================================================
-            const slidesContent = [];
-
-            // ---- اسلاید ۱: عنوان ----
-            slidesContent.push({
-                title: '▎جورچین',
-                body: 'انتگرال عددی با مثال تشریحی\n\nf(x) = x²  در بازه [0, 2]\n\nمقدار دقیق: 8/3 = 2.6667',
-                isTitle: true
-            });
-
-            // ---- اسلاید ۲: معرفی تابع و داده‌ها ----
-            slidesContent.push({
-                title: 'داده‌های مسئله',
-                body: 'تابع: f(x) = x^2\n' +
-                    'بازه: [0, 2]\n' +
-                    'تعداد زیربازه‌ها: n = 4\n' +
-                    'گام: h = (2-0)/4 = 0.5\n' +
-                    'نقاط: x0=0, x1=0.5, x2=1, x3=1.5, x4=2\n' +
-                    'مقادیر تابع:\n' +
-                    'f(0)=0, f(0.5)=0.25, f(1)=1, f(1.5)=2.25, f(2)=4'
-            });
-
-            // ---- اسلاید ۳: روش مستطیلی (تعریف و فرمول) ----
-            slidesContent.push({
-                title: 'روش مستطیلی (نقطه چپ)',
-                body: 'فرمول: ∫₀² f(x) dx ≈ h × [f(x0) + f(x1) + f(x2) + f(x3)]\n' +
-                    'h = 0.5\n' +
-                    'محاسبه: 0.5 × (0 + 0.25 + 1 + 2.25) = 0.5 × 3.5 = 1.75\n' +
-                    'مقدار دقیق: 2.6667\n' +
-                    'خطا = |2.6667 - 1.75| = 0.9167'
-            });
-
-            // ---- اسلاید ۴: روش مستطیلی (حل تشریحی کامل) ----
-            slidesContent.push({
-                title: 'روش مستطیلی - حل گام‌به‌گام',
-                body: 'گام ۱: محاسبه h = (2-0)/4 = 0.5\n' +
-                    'گام ۲: نوشتن نقاط: 0, 0.5, 1, 1.5\n' +
-                    'گام ۳: محاسبه f در نقاط:\n' +
-                    'f(0) = 0^2 = 0\n' +
-                    'f(0.5) = (0.5)^2 = 0.25\n' +
-                    'f(1) = 1^2 = 1\n' +
-                    'f(1.5) = (1.5)^2 = 2.25\n' +
-                    'گام ۴: جمع مقادیر = 0 + 0.25 + 1 + 2.25 = 3.5\n' +
-                    'گام ۵: تقریب = h × مجموع = 0.5 × 3.5 = 1.75'
-            });
-
-            // ---- اسلاید ۵: روش ذوزنقه‌ای ----
-            slidesContent.push({
-                title: 'روش ذوزنقه‌ای',
-                body: 'فرمول: ∫₀² f(x) dx ≈ (h/2) × [f(x0) + 2f(x1) + 2f(x2) + 2f(x3) + f(x4)]\n' +
-                    'h = 0.5\n' +
-                    'محاسبه: (0.5/2) × [0 + 2(0.25+1+2.25) + 4] = 0.25 × [0 + 7 + 4] = 0.25 × 11 = 2.75\n' +
-                    'مقدار دقیق: 2.6667\n' +
-                    'خطا = |2.6667 - 2.75| = 0.0833'
-            });
-
-            // ---- اسلاید ۶: روش ذوزنقه‌ای (حل تشریحی) ----
-            slidesContent.push({
-                title: 'روش ذوزنقه‌ای - حل گام‌به‌گام',
-                body: 'گام ۱: h = 0.5\n' +
-                    'گام ۲: نقاط و مقادیر:\n' +
-                    'x0=0 → f=0\n' +
-                    'x1=0.5 → f=0.25\n' +
-                    'x2=1 → f=1\n' +
-                    'x3=1.5 → f=2.25\n' +
-                    'x4=2 → f=4\n' +
-                    'گام ۳: مجموع وزن‌دار = 0 + 2(0.25+1+2.25) + 4 = 0 + 7 + 4 = 11\n' +
-                    'گام ۴: تقریب = (0.5/2) × 11 = 2.75'
-            });
-
-            // ---- اسلاید ۷: روش سیمپسون ----
-            slidesContent.push({
-                title: 'روش سیمپسون (n=4)',
-                body: 'فرمول: ∫₀² f(x) dx ≈ (h/3) × [f(x0) + 4f(x1) + 2f(x2) + 4f(x3) + f(x4)]\n' +
-                    'h = 0.5\n' +
-                    'محاسبه: (0.5/3) × [0 + 4(0.25+2.25) + 2(1) + 4] = (0.5/3) × [0 + 10 + 2 + 4] = (0.5/3) × 16 = 2.6667\n' +
-                    'مقدار دقیق: 2.6667\n' +
-                    'خطا = 0.0000 (دقیق!)'
-            });
-
-            // ---- اسلاید ۸: روش سیمپسون (حل تشریحی) ----
-            slidesContent.push({
-                title: 'روش سیمپسون - حل گام‌به‌گام',
-                body: 'گام ۱: h = 0.5\n' +
-                    'گام ۲: ضرایب سیمپسون: 1, 4, 2, 4, 1\n' +
-                    'گام ۳: محاسبه:\n' +
-                    'f(0) = 0  → ضریب 1 → 0×1 = 0\n' +
-                    'f(0.5)=0.25 → ضریب 4 → 0.25×4 = 1\n' +
-                    'f(1)=1 → ضریب 2 → 1×2 = 2\n' +
-                    'f(1.5)=2.25 → ضریب 4 → 2.25×4 = 9\n' +
-                    'f(2)=4 → ضریب 1 → 4×1 = 4\n' +
-                    'مجموع = 0 + 1 + 2 + 9 + 4 = 16\n' +
-                    'گام ۴: تقریب = (0.5/3) × 16 = 2.6667'
-            });
-
-            // ---- اسلاید ۹: روش گاوس-لژاندر ----
-            slidesContent.push({
-                title: 'روش گاوس-لژاندر (n=2)',
-                body: 'نقاط: t1 = -0.57735, t2 = +0.57735\n' +
-                    'وزن‌ها: w1 = w2 = 1\n' +
-                    'تبدیل به بازه [0,2]: x = 1 + t\n' +
-                    'x1 = 0.42265 → f(x1) = 0.1786\n' +
-                    'x2 = 1.57735 → f(x2) = 2.488\n' +
-                    'تقریب = 1×0.1786 + 1×2.488 = 2.6666 ≈ 2.6667\n' +
-                    'خطا ≈ 0.0001'
-            });
-
-            // ---- اسلاید ۱۰: جدول مقایسه ----
-            slidesContent.push({
-                title: 'مقایسه‌ی روش‌ها (با n=4)',
-                body: 'روش مستطیلی: تقریب = 1.7500  |  خطا = 0.9167\n' +
-                    'روش ذوزنقه‌ای: تقریب = 2.7500  |  خطا = 0.0833\n' +
-                    'روش سیمپسون: تقریب = 2.6667  |  خطا = 0.0000\n' +
-                    'روش گاوس (n=2): تقریب = 2.6666  |  خطا ≈ 0.0001\n\n' +
-                    'نتیجه: روش سیمپسون با n=4 جواب دقیق می‌دهد.\n' +
-                    'روش گاوس با فقط ۲ نقطه، دقتی معادل سیمپسون با ۴ نقطه دارد.'
-            });
-
-            // ---- اسلاید ۱۱: نتیجه‌گیری نهایی ----
-            slidesContent.push({
-                title: 'جمع‌بندی و نتیجه‌گیری',
-                body: '✅ روش سیمپسون برای توابع چندجمله‌ای درجه≤3 دقیق است.\n' +
-                    '✅ روش گاوس با نقاط بهینه، دقت بسیار بالا با تعداد نقاط کم دارد.\n' +
-                    '✅ روش ذوزنقه‌ای برای توابع با انحنای ملایم مناسب است.\n' +
-                    '❌ روش مستطیلی ساده است اما خطای بالایی دارد.\n\n' +
-                    '💡 انتخاب روش به دقت مورد نیاز و پیچیدگی تابع بستگی دارد.'
-            });
-
-            // ---- اسلاید ۱۲: تقدیر ----
-            slidesContent.push({
-                title: 'تقدیر و احترام',
-                body: 'این ارائه توسط سامانه‌ی «جورچین» تهیه شده است.\n\n' +
-                    'طراحی و برنامه‌نویسی:\nمحمدرسول یزدیان\n\n' +
-                    'تمامی حقوق محفوظ است · ۱۴۰۴'
-            });
-
-            // ---- اسلایدهای اضافی برای تکمیل تعداد (تا ۴۰ اسلاید) ----
-            // برای افزایش تعداد اسلایدها، هر روش را با جزئیات بیشتر تکرار می‌کنیم
-            const extraSlides = [
-                { title: 'مقایسه‌ی خطاها بر اساس تعداد زیربازه‌ها', body: 'با افزایش n، خطای هر روش کاهش می‌یابد.\n' +
-                        'n=2: مستطیلی 1.333, ذوزنقه‌ای 0.667, سیمپسون 0.167\n' +
-                        'n=4: مستطیلی 0.917, ذوزنقه‌ای 0.083, سیمپسون 0.000\n' +
-                        'n=8: مستطیلی 0.479, ذوزنقه‌ای 0.021, سیمپسون 0.000' },
-                { title: 'کاربردهای انتگرال عددی', body: 'محاسبه مساحت زیر منحنی‌های پیچیده\n' +
-                        'حل معادلات دیفرانسیل با روش‌های عددی\n' +
-                        'پردازش سیگنال و تصویر\n' +
-                        'محاسبه مرکز جرم و گشتاور اینرسی در مهندسی' },
-                { title: 'تاریخچه‌ی روش‌های انتگرال عددی', body: 'روش مستطیلی: از دوران باستان (ارشمیدس)\n' +
-                        'روش ذوزنقه‌ای: قرن ۱۷ (نیوتن)\n' +
-                        'روش سیمپسون: ۱۷۴۳ (توماس سیمپسون)\n' +
-                        'روش گاوس: اوایل قرن ۱۹ (کارل گاوس)' },
-                { title: 'مقایسه‌ی سرعت محاسبات', body: 'روش مستطیلی: O(n)  → بسیار سریع\n' +
-                        'روش ذوزنقه‌ای: O(n)  → سریع\n' +
-                        'روش سیمپسون: O(n)  → متوسط\n' +
-                        'روش گاوس: O(n)  → با n کوچک بسیار سریع' }
-            ];
-
-            // اضافه کردن اسلایدهای تکراری برای رسیدن به ۴۰ اسلاید
-            for (let i = 0; i < 28; i++) {
-                const idx = i % extraSlides.length;
-                slidesContent.push(extraSlides[idx]);
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast('✅ کپی شد: ' + text);
+            } catch (err) {
+                showToast('❌ کپی نشد. لطفاً دستی کپی کنید.');
             }
+            document.body.removeChild(textarea);
+        }
 
-            // ============================================================
-            // 2. ساخت پاورپوینت
-            // ============================================================
-            function buildPowerPoint() {
-                const pptx = new PptxGenJS();
-                pptx.defineLayout({ name: 'WIDE', width: 13.33, height: 7.5 });
-                pptx.layout = 'WIDE';
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.textContent = msg;
+            toast.style.cssText = `
+                position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
+                background: #1a1a1a; color: #fff; padding: 12px 25px;
+                border-radius: 12px; border: 1px solid var(--primary-color);
+                z-index: 99999; font-size: 1rem; box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+                direction: rtl; text-align: center; max-width: 90%;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
 
-                const bg = '1A1F2A';
-                const txt = 'E8EDF5';
-                const accent = '6C8CFF';
+        function getImageUrl(name) {
+            return `https://placehold.co/300x200/1a1a1a/00d4ff?text=${encodeURIComponent(name)}`;
+        }
 
-                for (let i = 0; i < slidesContent.length; i++) {
-                    const slide = pptx.addSlide();
-                    slide.background = { color: bg };
+        // ============================================================
+        // محصولات (بیش از ۱۵۰ قطعه)
+        // ============================================================
+        const defaultProducts = [
+            { name: "BC547", type: "ترانزیستور NPN", count: 159, price: 12000, priceText: "۱۲,۰۰۰ تومان" },
+            { name: "BC557", type: "ترانزیستور PNP", count: 159, price: 13500, priceText: "۱۳,۵۰۰ تومان" },
+            { name: "TIP3055", type: "ترانزیستور قدرت NPN", count: 120, price: 45000, priceText: "۴۵,۰۰۰ تومان" },
+            { name: "TIP2955", type: "ترانزیستور قدرت PNP", count: 100, price: 48000, priceText: "۴۸,۰۰۰ تومان" },
+            { name: "2N2222", type: "ترانزیستور NPN", count: 350, price: 8000, priceText: "۸,۰۰۰ تومان" },
+            { name: "2N3904", type: "ترانزیستور NPN", count: 400, price: 7000, priceText: "۷,۰۰۰ تومان" },
+            { name: "2N3906", type: "ترانزیستور PNP", count: 380, price: 7500, priceText: "۷,۵۰۰ تومان" },
+            { name: "IRFZ44N", type: "موسفت قدرت", count: 150, price: 35000, priceText: "۳۵,۰۰۰ تومان" },
+            { name: "IRF540", type: "موسفت قدرت", count: 130, price: 40000, priceText: "۴۰,۰۰۰ تومان" },
+            { name: "IRF3205", type: "موسفت قدرت", count: 100, price: 55000, priceText: "۵۵,۰۰۰ تومان" },
+            { name: "LM317", type: "تنظیم‌کننده ولتاژ", count: 200, price: 25000, priceText: "۲۵,۰۰۰ تومان" },
+            { name: "LM358", type: "اپ‌امپ دوگانه", count: 220, price: 9000, priceText: "۹,۰۰۰ تومان" },
+            { name: "LM324", type: "اپ‌امپ چهارگانه", count: 180, price: 12000, priceText: "۱۲,۰۰۰ تومان" },
+            { name: "NE555", type: "تایمر معروف", count: 300, price: 8500, priceText: "۸,۵۰۰ تومان" },
+            { name: "CD4017", type: "آی‌سی شمارنده", count: 160, price: 18000, priceText: "۱۸,۰۰۰ تومان" },
+            { name: "CD4047", type: "آی‌سی مولتی‌ویبراتور", count: 140, price: 22000, priceText: "۲۲,۰۰۰ تومان" },
+            { name: "ATMEGA328", type: "میکروکنترلر", count: 120, price: 120000, priceText: "۱۲۰,۰۰۰ تومان" },
+            { name: "ATtiny85", type: "میکروکنترلر", count: 100, price: 65000, priceText: "۶۵,۰۰۰ تومان" },
+            { name: "74HC595", type: "شیفت رجیستر", count: 200, price: 15000, priceText: "۱۵,۰۰۰ تومان" },
+            { name: "ULN2003", type: "درایور موتور", count: 180, price: 22000, priceText: "۲۲,۰۰۰ تومان" },
+            { name: "L293D", type: "درایور موتور", count: 150, price: 35000, priceText: "۳۵,۰۰۰ تومان" },
+            { name: "L298N", type: "درایور موتور", count: 100, price: 55000, priceText: "۵۵,۰۰۰ تومان" },
+            { name: "MAX7219", type: "درایور LED", count: 120, price: 45000, priceText: "۴۵,۰۰۰ تومان" },
+            { name: "DS1307", type: "ماژول زمان RTC", count: 130, price: 38000, priceText: "۳۸,۰۰۰ تومان" },
+            { name: "DS18B20", type: "سنسور دما", count: 200, price: 25000, priceText: "۲۵,۰۰۰ تومان" },
+            { name: "LM35", type: "سنسور دما", count: 250, price: 18000, priceText: "۱۸,۰۰۰ تومان" },
+            { name: "DHT11", type: "سنسور دما و رطوبت", count: 180, price: 28000, priceText: "۲۸,۰۰۰ تومان" },
+            { name: "DHT22", type: "سنسور دما و رطوبت", count: 100, price: 45000, priceText: "۴۵,۰۰۰ تومان" },
+            { name: "HC-05", type: "ماژول بلوتوث", count: 120, price: 85000, priceText: "۸۵,۰۰۰ تومان" },
+            { name: "HC-06", type: "ماژول بلوتوث", count: 100, price: 75000, priceText: "۷۵,۰۰۰ تومان" },
+            { name: "ESP8266", type: "ماژول WiFi", count: 80, price: 120000, priceText: "۱۲۰,۰۰۰ تومان" },
+            { name: "ESP32", type: "ماژول WiFi+BLE", count: 60, price: 180000, priceText: "۱۸۰,۰۰۰ تومان" },
+            { name: "RC522", type: "ماژول RFID", count: 70, price: 65000, priceText: "۶۵,۰۰۰ تومان" },
+            { name: "NEO-6M", type: "ماژول GPS", count: 50, price: 180000, priceText: "۱۸۰,۰۰۰ تومان" },
+            { name: "HC-SR04", type: "ماژول اولتراسونیک", count: 100, price: 45000, priceText: "۴۵,۰۰۰ تومان" },
+            { name: "HC-SR501", type: "ماژول PIR (حرکت)", count: 90, price: 55000, priceText: "۵۵,۰۰۰ تومان" },
+            { name: "MAX30100", type: "ماژول ضربان قلب", count: 60, price: 95000, priceText: "۹۵,۰۰۰ تومان" },
+            { name: "MAX30102", type: "ماژول ضربان قلب", count: 50, price: 110000, priceText: "۱۱۰,۰۰۰ تومان" },
+            { name: "ADXL345", type: "ماژول شتاب‌سنج", count: 70, price: 75000, priceText: "۷۵,۰۰۰ تومان" },
+            { name: "MPU6050", type: "ماژول ژیروسکوپ", count: 80, price: 85000, priceText: "۸۵,۰۰۰ تومان" },
+            { name: "HX711", type: "ماژول وزنه‌سنج", count: 60, price: 68000, priceText: "۶۸,۰۰۰ تومان" },
+            { name: "TTP223", type: "ماژول تاچ", count: 150, price: 15000, priceText: "۱۵,۰۰۰ تومان" },
+            { name: "KY-018", type: "ماژول فوتو رزیستور", count: 100, price: 12000, priceText: "۱۲,۰۰۰ تومان" },
+            { name: "KY-019", type: "ماژول رله 5V", count: 120, price: 25000, priceText: "۲۵,۰۰۰ تومان" },
+            { name: "KY-020", type: "ماژول سوئیچ ارتعاش", count: 90, price: 18000, priceText: "۱۸,۰۰۰ تومان" },
+            { name: "KY-021", type: "ماژول سوئیچ مغناطیسی", count: 80, price: 20000, priceText: "۲۰,۰۰۰ تومان" },
+            { name: "KY-022", type: "ماژول گیرنده IR", count: 100, price: 15000, priceText: "۱۵,۰۰۰ تومان" },
+            { name: "KY-023", type: "ماژول جوی استیک", count: 70, price: 35000, priceText: "۳۵,۰۰۰ تومان" },
+            { name: "KY-024", type: "ماژول اثر هال", count: 80, price: 22000, priceText: "۲۲,۰۰۰ تومان" },
+            { name: "KY-025", type: "ماژول رید سوئیچ", count: 90, price: 18000, priceText: "۱۸,۰۰۰ تومان" },
+            { name: "Arduino Uno", type: "برد آردوینو R3", count: 40, price: 280000, priceText: "۲۸۰,۰۰۰ تومان" },
+            { name: "Arduino Nano", type: "برد آردوینو Nano", count: 55, price: 210000, priceText: "۲۱۰,۰۰۰ تومان" },
+            { name: "Arduino Mega 2560", type: "برد آردوینو Mega", count: 25, price: 450000, priceText: "۴۵۰,۰۰۰ تومان" },
+            { name: "Arduino Leonardo", type: "برد آردوینو Leonardo", count: 30, price: 320000, priceText: "۳۲۰,۰۰۰ تومان" },
+            { name: "Arduino Micro", type: "برد آردوینو Micro", count: 35, price: 250000, priceText: "۲۵۰,۰۰۰ تومان" },
+            { name: "ESP8266 NodeMCU", type: "برد ESP8266", count: 50, price: 160000, priceText: "۱۶۰,۰۰۰ تومان" },
+            { name: "ESP32 DevKit", type: "برد ESP32", count: 40, price: 220000, priceText: "۲۲۰,۰۰۰ تومان" },
+            { name: "باتری 18650 2000mAh", type: "لیتیومی 3.7V", count: 200, price: 55000, priceText: "۵۵,۰۰۰ تومان" },
+            { name: "باتری 18650 2500mAh", type: "لیتیومی 3.7V", count: 180, price: 65000, priceText: "۶۵,۰۰۰ تومان" },
+            { name: "باتری 18650 3000mAh", type: "لیتیومی 3.7V", count: 150, price: 75000, priceText: "۷۵,۰۰۰ تومان" },
+            { name: "باتری 18650 3400mAh", type: "لیتیومی 3.7V", count: 100, price: 85000, priceText: "۸۵,۰۰۰ تومان" },
+            { name: "باتری لیتیوم پلیمر 500mAh", type: "3.7V", count: 120, price: 35000, priceText: "۳۵,۰۰۰ تومان" },
+            { name: "باتری لیتیوم پلیمر 1000mAh", type: "3.7V", count: 100, price: 45000, priceText: "۴۵,۰۰۰ تومان" },
+            { name: "باتری لیتیوم پلیمر 2000mAh", type: "3.7V", count: 80, price: 65000, priceText: "۶۵,۰۰۰ تومان" },
+            { name: "باتری لیتیوم پلیمر 4000mAh", type: "3.7V", count: 60, price: 95000, priceText: "۹۵,۰۰۰ تومان" },
+            { name: "باتری 9V", type: "باتری قلمی", count: 150, price: 20000, priceText: "۲۰,۰۰۰ تومان" },
+            { name: "باتری AA", type: "باتری قلمی", count: 200, price: 8000, priceText: "۸,۰۰۰ تومان" },
+            { name: "باتری AAA", type: "باتری قلمی", count: 200, price: 7000, priceText: "۷,۰۰۰ تومان" },
+            { name: "موتور DC 3V", type: "آرمیچر ساده", count: 120, price: 18000, priceText: "۱۸,۰۰۰ تومان" },
+            { name: "موتور DC 6V", type: "آرمیچر ساده", count: 100, price: 22000, priceText: "۲۲,۰۰۰ تومان" },
+            { name: "موتور DC 12V", type: "آرمیچر ساده", count: 80, price: 28000, priceText: "۲۸,۰۰۰ تومان" },
+            { name: "موتور گیربکس‌دار", type: "موتور DC با گیربکس", count: 60, price: 45000, priceText: "۴۵,۰۰۰ تومان" },
+            { name: "سروو موتور SG90", type: "سروو 9g", count: 100, price: 48000, priceText: "۴۸,۰۰۰ تومان" },
+            { name: "سروو موتور MG995", type: "سروو 13Kg", count: 70, price: 85000, priceText: "۸۵,۰۰۰ تومان" },
+            { name: "استپر موتور 28BYJ-48", type: "استپر 5V", count: 80, price: 55000, priceText: "۵۵,۰۰۰ تومان" },
+            { name: "استپر موتور NEMA17", type: "استپر 12V", count: 50, price: 120000, priceText: "۱۲۰,۰۰۰ تومان" },
+            { name: "ماژول تایمر NE555", type: "ماژول تایمر", count: 100, price: 25000, priceText: "۲۵,۰۰۰ تومان" },
+            { name: "ماژول ترموستات دیجیتال", type: "ترموستات", count: 60, price: 55000, priceText: "۵۵,۰۰۰ تومان" },
+            { name: "ماژول سنسور دما DS18B20", type: "سنسور دما", count: 120, price: 32000, priceText: "۳۲,۰۰۰ تومان" },
+            { name: "ماژول سنسور دما LM35", type: "سنسور دما", count: 130, price: 22000, priceText: "۲۲,۰۰۰ تومان" },
+            { name: "پتانسیومتر 1K", type: "مقاومت متغیر", count: 150, price: 8000, priceText: "۸,۰۰۰ تومان" },
+            { name: "پتانسیومتر 5K", type: "مقاومت متغیر", count: 140, price: 8500, priceText: "۸,۵۰۰ تومان" },
+            { name: "پتانسیومتر 10K", type: "مقاومت متغیر", count: 200, price: 9000, priceText: "۹,۰۰۰ تومان" },
+            { name: "پتانسیومتر 50K", type: "مقاومت متغیر", count: 120, price: 10000, priceText: "۱۰,۰۰۰ تومان" },
+            { name: "پتانسیومتر 100K", type: "مقاومت متغیر", count: 150, price: 11000, priceText: "۱۱,۰۰۰ تومان" },
+            { name: "پتانسیومتر 1M", type: "مقاومت متغیر", count: 100, price: 12000, priceText: "۱۲,۰۰۰ تومان" },
+            { name: "LED قرمز 5mm", type: "LED 5mm", count: 500, price: 1500, priceText: "۱,۵۰۰ تومان" },
+            { name: "LED سبز 5mm", type: "LED 5mm", count: 480, price: 1500, priceText: "۱,۵۰۰ تومان" },
+            { name: "LED آبی 5mm", type: "LED 5mm", count: 450, price: 1800, priceText: "۱,۸۰۰ تومان" },
+            { name: "LED زرد 5mm", type: "LED 5mm", count: 400, price: 1500, priceText: "۱,۵۰۰ تومان" },
+            { name: "LED سفید 5mm", type: "LED 5mm", count: 350, price: 2000, priceText: "۲,۰۰۰ تومان" },
+            { name: "LED RGB 5mm", type: "LED RGB", count: 200, price: 5000, priceText: "۵,۰۰۰ تومان" },
+            { name: "LED SMD 5050", type: "LED SMD", count: 300, price: 3000, priceText: "۳,۰۰۰ تومان" },
+            { name: "LED 3mm", type: "LED 3mm", count: 400, price: 1200, priceText: "۱,۲۰۰ تومان" },
+            { name: "1N4007", type: "دیود یکسوساز", count: 300, price: 2000, priceText: "۲,۰۰۰ تومان" },
+            { name: "1N4148", type: "دیود سیگنال", count: 350, price: 1500, priceText: "۱,۵۰۰ تومان" },
+            { name: "دیود زنر 3.3V", type: "دیود زنر", count: 200, price: 2500, priceText: "۲,۵۰۰ تومان" },
+            { name: "دیود زنر 5.1V", type: "دیود زنر", count: 200, price: 2500, priceText: "۲,۵۰۰ تومان" },
+            { name: "دیود زنر 6.8V", type: "دیود زنر", count: 180, price: 2800, priceText: "۲,۸۰۰ تومان" },
+            { name: "دیود زنر 9.1V", type: "دیود زنر", count: 160, price: 3000, priceText: "۳,۰۰۰ تومان" },
+            { name: "دیود زنر 12V", type: "دیود زنر", count: 150, price: 3200, priceText: "۳,۲۰۰ تومان" },
+            { name: "1N5819", type: "دیود شاتکی", count: 200, price: 3500, priceText: "۳,۵۰۰ تومان" },
+            { name: "SS34", type: "دیود شاتکی", count: 180, price: 4000, priceText: "۴,۰۰۰ تومان" },
+            { name: "SS12", type: "دیود شاتکی", count: 160, price: 3800, priceText: "۳,۸۰۰ تومان" },
+            { name: "مقاومت 10Ω", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 100Ω", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 220Ω", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 330Ω", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 470Ω", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 1K", type: "مقاومت 1/4W", count: 600, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 2.2K", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 4.7K", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 10K", type: "مقاومت 1/4W", count: 600, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 22K", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 47K", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 100K", type: "مقاومت 1/4W", count: 500, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 220K", type: "مقاومت 1/4W", count: 400, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 470K", type: "مقاومت 1/4W", count: 400, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 1M", type: "مقاومت 1/4W", count: 400, price: 500, priceText: "۵۰۰ تومان" },
+            { name: "مقاومت 10M", type: "مقاومت 1/4W", count: 300, price: 600, priceText: "۶۰۰ تومان" },
+            { name: "خازن 10pF", type: "خازن سرامیکی", count: 400, price: 800, priceText: "۸۰۰ تومان" },
+            { name: "خازن 22pF", type: "خازن سرامیکی", count: 400, price: 800, priceText: "۸۰۰ تومان" },
+            { name: "خازن 47pF", type: "خازن سرامیکی", count: 400, price: 800, priceText: "۸۰۰ تومان" },
+            { name: "خازن 100pF", type: "خازن سرامیکی", count: 400, price: 800, priceText: "۸۰۰ تومان" },
+            { name: "خازن 1nF", type: "خازن سرامیکی", count: 400, price: 800, priceText: "۸۰۰ تومان" },
+            { name: "خازن 10nF", type: "خازن سرامیکی", count: 400, price: 800, priceText: "۸۰۰ تومان" },
+            { name: "خازن 100nF", type: "خازن سرامیکی", count: 500, price: 1000, priceText: "۱,۰۰۰ تومان" },
+            { name: "خازن 1µF", type: "خازن الکترولیتی", count: 300, price: 1500, priceText: "۱,۵۰۰ تومان" },
+            { name: "خازن 10µF", type: "خازن الکترولیتی", count: 300, price: 2000, priceText: "۲,۰۰۰ تومان" },
+            { name: "خازن 22µF", type: "خازن الکترولیتی", count: 280, price: 2200, priceText: "۲,۲۰۰ تومان" },
+            { name: "خازن 47µF", type: "خازن الکترولیتی", count: 250, price: 2500, priceText: "۲,۵۰۰ تومان" },
+            { name: "خازن 100µF", type: "خازن الکترولیتی", count: 250, price: 3000, priceText: "۳,۰۰۰ تومان" },
+            { name: "خازن 220µF", type: "خازن الکترولیتی", count: 200, price: 3500, priceText: "۳,۵۰۰ تومان" },
+            { name: "خازن 470µF", type: "خازن الکترولیتی", count: 180, price: 4000, priceText: "۴,۰۰۰ تومان" },
+            { name: "خازن 1000µF", type: "خازن الکترولیتی", count: 150, price: 5000, priceText: "۵,۰۰۰ تومان" }
+        ];
 
-                    // اضافه کردن اشکال پس‌زمینه (خطوط ساده)
-                    slide.addShape(pptx.ShapeType.rect, { x: 0, y: 2, w: 13, h: 0.1, fill: { color: '6C8CFF' },
-                        opacity: 0.05, line: { color: '6C8CFF', width: 0 } });
-                    slide.addShape(pptx.ShapeType.rect, { x: 2, y: 0, w: 0.1, h: 7.5, fill: { color: '6C8CFF' },
-                        opacity: 0.05, line: { color: '6C8CFF', width: 0 } });
-                    slide.addShape(pptx.ShapeType.ellipse, { x: 10, y: 5, w: 2, h: 1.5, fill: { color: '6C8CFF' },
-                        opacity: 0.04, line: { color: '6C8CFF', width: 0 } });
-
-                    // نام نویسنده در بالای هر اسلاید (به جز صفحه اول)
-                    if (i > 0) {
-                        slide.addText('نویسنده: محمدرسول یزدیان', { x: 0.5, y: 0.1, w: 12, h: 0.5, fontSize: 12,
-                            color: '6C8CFF', align: 'left', fontFace: 'Vazir' });
-                    }
-
-                    // عنوان
-                    slide.addText(slidesContent[i].title, {
-                        x: 0.5,
-                        y: (i === 0) ? 0.8 : 0.6,
-                        w: 12,
-                        h: 1.2,
-                        fontSize: (i === 0) ? 44 : 32,
-                        color: accent,
-                        align: (i === 0) ? 'center' : 'right',
-                        bold: true,
-                        fontFace: 'Vazir'
-                    });
-
-                    // متن (با فرمول‌های ساده‌شده)
-                    slide.addText(slidesContent[i].body, {
-                        x: 0.8,
-                        y: (i === 0) ? 2.5 : 2.0,
-                        w: 11.5,
-                        h: 4.5,
-                        fontSize: (i === 0) ? 30 : 20,
-                        color: txt,
-                        align: (i === 0) ? 'center' : 'right',
-                        valign: 'top',
-                        lineSpacing: (i === 0) ? 40 : 28,
-                        fontFace: 'Vazir'
-                    });
-
-                    // شماره اسلاید
-                    slide.addText(`اسلاید ${i+1} از ${slidesContent.length}`, {
-                        x: 0.5,
-                        y: 6.9,
-                        w: 12,
-                        h: 0.5,
-                        fontSize: 12,
-                        color: '5E6A82',
-                        align: 'left',
-                        fontFace: 'Vazir'
-                    });
-                }
-
-                return pptx;
-            }
-
-            // ============================================================
-            // 3. رویدادها
-            // ============================================================
-            buildBtn.addEventListener('click', async function() {
-                downloadSection.style.display = 'none';
-                setStatus('⏳ در حال ساخت پاورپوینت ... (لطفاً صبر کنید)');
-                buildBtn.disabled = true;
-
+        // ============================================================
+        // منطق اصلی برنامه (بارگذاری، سبد خرید، موجودی، فاکتور، ایمیل)
+        // ============================================================
+        function loadProductData() {
+            const saved = localStorage.getItem('productData');
+            if (saved) {
                 try {
-                    const pptx = buildPowerPoint();
-                    const blob = await pptx.write({ outputType: 'blob' });
-                    lastFileName = 'جورچین_انتگرال_عددی_مثال_تشریحی.pptx';
-                    lastBlob = blob;
+                    const parsed = JSON.parse(saved);
+                    return parsed.map(p => ({
+                        ...defaultProducts.find(d => d.name === p.name) || {},
+                        ...p
+                    }));
+                } catch (e) {
+                    return JSON.parse(JSON.stringify(defaultProducts));
+                }
+            }
+            return JSON.parse(JSON.stringify(defaultProducts));
+        }
 
-                    downloadSection.style.display = 'block';
-                    setStatus('✅ پاورپوینت با موفقیت ساخته شد!');
+        function saveProductData(products) {
+            localStorage.setItem('productData', JSON.stringify(products));
+        }
 
-                } catch (err) {
-                    console.error(err);
-                    setStatus('❌ خطا در ساخت پاورپوینت: ' + err.message, true);
-                } finally {
-                    buildBtn.disabled = false;
+        let productData = loadProductData();
+        let cart = [];
+        let currentOrderAddress = null;
+
+        // ===== رندر محصولات =====
+        function renderProducts(products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            products.forEach(p => {
+                const isAvailable = p.count > 0;
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                const imgSrc = p.image || getImageUrl(p.name);
+                card.innerHTML = `
+                    <img src="${imgSrc}" alt="${p.name} - فروشگاه برق یزدیان" loading="lazy" onerror="this.src='${getImageUrl(p.name)}'">
+                    <h3>${p.name}</h3>
+                    <div class="type">${p.type}</div>
+                    <div class="price">${p.priceText}</div>
+                    <div class="stock-info">موجودی: <span id="stock-${p.name.replace(/\s/g, '')}">${p.count}</span> عدد</div>
+                    <span class="stock-badge ${isAvailable ? 'available' : 'unavailable'}">
+                        ${isAvailable ? '✅ موجود' : '❌ ناموجود'}
+                    </span>
+                    ${isAvailable ? `
+                        <div class="qty-selector">
+                            <span>تعداد:</span>
+                            <input type="number" id="qty-${p.name.replace(/\s/g, '')}" value="1" min="1" max="${p.count}">
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart('${p.name}')">➕ افزودن به سبد</button>
+                    ` : '<p style="color:#888; font-size:0.75rem;">ناموجود</p>'}
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ===== به‌روزرسانی نمایش موجودی =====
+        function updateStockDisplay() {
+            productData.forEach(p => {
+                const id = p.name.replace(/\s/g, '');
+                const span = document.getElementById(`stock-${id}`);
+                if (span) span.textContent = p.count;
+                const card = span?.closest('.product-card');
+                if (card) {
+                    const badge = card.querySelector('.stock-badge');
+                    const qtyInput = card.querySelector('.qty-selector input');
+                    const addBtn = card.querySelector('.add-to-cart');
+                    if (p.count > 0) {
+                        badge.className = 'stock-badge available';
+                        badge.textContent = '✅ موجود';
+                        if (qtyInput) qtyInput.max = p.count;
+                        if (addBtn) addBtn.style.display = '';
+                        if (qtyInput) qtyInput.value = Math.min(parseInt(qtyInput.value) || 1, p.count);
+                    } else {
+                        badge.className = 'stock-badge unavailable';
+                        badge.textContent = '❌ ناموجود';
+                        if (qtyInput) qtyInput.max = 0;
+                        if (addBtn) addBtn.style.display = 'none';
+                        cart = cart.filter(item => item.name !== p.name);
+                        updateCart();
+                    }
+                }
+            });
+            saveProductData(productData);
+        }
+
+        // ===== افزودن به سبد =====
+        function addToCart(name) {
+            const product = productData.find(p => p.name === name);
+            if (!product || product.count <= 0) return;
+            const id = name.replace(/\s/g, '');
+            const qtyInput = document.getElementById(`qty-${id}`);
+            let qty = parseInt(qtyInput.value) || 1;
+            if (qty > product.count) qty = product.count;
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                if (existing.qty + qty > product.count) {
+                    alert(`موجودی کافی نیست. حداکثر ${product.count} عدد موجود است.`);
+                    return;
+                }
+                existing.qty += qty;
+            } else {
+                cart.push({ name: name, qty: qty, price: product.price });
+            }
+            updateCart();
+        }
+
+        // ===== حذف از سبد =====
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCart();
+        }
+
+        // ===== به‌روزرسانی سبد =====
+        function updateCart() {
+            const container = document.getElementById('cartItems');
+            const totalEl = document.getElementById('cartTotal');
+            let total = 0;
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color: #888;">هنوز محصولی به سبد خرید اضافه نشده است.</p>';
+                totalEl.textContent = 'جمع کل: ۰ تومان';
+                return;
+            }
+            let html = '';
+            cart.forEach(item => {
+                const product = productData.find(p => p.name === item.name);
+                const itemTotal = item.qty * item.price;
+                total += itemTotal;
+                html += `
+                    <div class="cart-item">
+                        <span>
+                            <button class="remove-btn" onclick="removeFromCart('${item.name}')">✕</button>
+                            ${item.name} × ${item.qty}
+                        </span>
+                        <span>${itemTotal.toLocaleString()} تومان</span>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+            totalEl.textContent = `جمع کل: ${total.toLocaleString()} تومان`;
+        }
+
+        // ===== خالی کردن سبد =====
+        function clearCart() {
+            if (cart.length === 0) return;
+            if (confirm('آیا مطمئن هستید که می‌خواهید سبد خرید را خالی کنید؟')) {
+                cart = [];
+                updateCart();
+                document.getElementById('paymentMessage').classList.remove('show');
+                document.getElementById('invoiceOverlay').classList.remove('active');
+            }
+        }
+
+        // ===== ثبت سفارش =====
+        function checkout() {
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const address = document.getElementById('customerAddress').value.trim();
+            const postalCode = document.getElementById('customerPostalCode').value.trim();
+
+            if (!name || !phone || !address || !postalCode) {
+                alert('❌ لطفاً تمام فیلدهای آدرس را تکمیل کنید.');
+                return;
+            }
+
+            if (cart.length === 0) {
+                alert('❌ سبد خرید شما خالی است!');
+                return;
+            }
+
+            currentOrderAddress = { name, phone, address, postalCode };
+
+            const invoiceBox = document.getElementById('invoiceBox');
+            let total = 0;
+            let rows = '';
+            cart.forEach(item => {
+                const product = productData.find(p => p.name === item.name);
+                const itemTotal = item.qty * item.price;
+                total += itemTotal;
+                rows += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.qty}</td>
+                        <td>${item.price.toLocaleString()} تومان</td>
+                        <td>${itemTotal.toLocaleString()} تومان</td>
+                    </tr>
+                `;
+            });
+
+            const addressHtml = `
+                <div style="background:#0a1a2a; border:1px solid var(--primary-color); border-radius:10px; padding:12px; margin:12px 0; color:#aaddff; text-align:right; font-size:0.9rem;">
+                    <strong style="color:var(--primary-color);">📍 اطلاعات ارسال</strong><br>
+                    <strong>نام:</strong> ${currentOrderAddress.name}<br>
+                    <strong>تلفن:</strong> ${currentOrderAddress.phone}<br>
+                    <strong>آدرس:</strong> ${currentOrderAddress.address}<br>
+                    <strong>کد پستی:</strong> ${currentOrderAddress.postalCode}
+                </div>
+            `;
+
+            invoiceBox.innerHTML = `
+                <table>
+                    <thead><tr><th>نام قطعه</th><th>تعداد</th><th>قیمت واحد</th><th>جمع</th></tr></thead>
+                    <tbody>${rows}<tr class="total-row"><td colspan="3">جمع کل</td><td>${total.toLocaleString()} تومان</td></tr></tbody>
+                </table>
+                ${addressHtml}
+            `;
+
+            document.getElementById('paymentMessage').classList.add('show');
+            document.getElementById('paymentMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // ============================================================
+        // نمایش فاکتور نهایی + کاهش موجودی + ارسال به ایمیل
+        // ============================================================
+        function showInvoiceInPage() {
+            // کاهش موجودی
+            cart.forEach(item => {
+                const product = productData.find(p => p.name === item.name);
+                if (product) {
+                    product.count -= item.qty;
+                    if (product.count < 0) product.count = 0;
+                }
+            });
+            saveProductData(productData);
+            updateStockDisplay();
+
+            let total = 0, rows = '';
+            cart.forEach(item => {
+                const product = productData.find(p => p.name === item.name);
+                const itemTotal = item.qty * item.price;
+                total += itemTotal;
+                rows += `<tr><td>${item.name}</td><td>${item.qty}</td><td>${item.price.toLocaleString()} تومان</td><td>${itemTotal.toLocaleString()} تومان</td></tr>`;
+            });
+
+            const addr = currentOrderAddress || { name: '', phone: '', address: '', postalCode: '' };
+            const addressHtml = `
+                <div style="background:#0a1a2a; border:1px solid var(--primary-color); border-radius:10px; padding:12px; margin:12px 0; color:#aaddff; text-align:right; font-size:0.85rem;">
+                    <strong style="color:var(--primary-color);">📍 اطلاعات ارسال</strong><br>
+                    <strong>نام:</strong> ${addr.name}<br>
+                    <strong>تلفن:</strong> ${addr.phone}<br>
+                    <strong>آدرس:</strong> ${addr.address}<br>
+                    <strong>کد پستی:</strong> ${addr.postalCode}
+                </div>
+            `;
+
+            const overlay = document.getElementById('invoiceOverlay');
+            const card = document.getElementById('invoiceCard');
+            card.innerHTML = `
+                <h2>🧾 فاکتور خرید</h2>
+                <table>
+                    <thead><tr><th>نام قطعه</th><th>تعداد</th><th>قیمت واحد</th><th>جمع</th></tr></thead>
+                    <tbody>${rows}<tr class="total-row"><td colspan="3">جمع کل</td><td>${total.toLocaleString()} تومان</td></tr></tbody>
+                </table>
+                ${addressHtml}
+                <div class="card-number-box">۵۸۵۹۸۳۱۸۲۳۴۶۵۶۹۴</div>
+                <p style="text-align:center; color:#aaa; font-size:0.9rem;">به نام: محمدرسول یزدیان</p>
+                <div class="condition-box"><strong>📦 شرط ارسال:</strong><br>ارسال <strong>پیامک واریزی</strong>، <strong>عکس فاکتور نهایی</strong> و <strong>آدرس دقیق</strong> به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا الزامی است.</div>
+                <div class="address-box"><strong>📍 ارسال آدرس:</strong><br>لطفاً <strong>آدرس کامل خود</strong> را به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا ارسال کنید.</div>
+                <div class="emphasis">📸 <strong>تاکید:</strong> لطفاً <span style="color:var(--gold);">عکس فاکتور نهایی</span> به‌همراه <span style="color:var(--gold);">عکس واریزی</span> را به آیدی ایتا ارسال کنید.</div>
+                <div class="guide-box"><p>📌 پس از واریز، عکس فاکتور، عکس پیامک واریزی و آدرس کامل خود را به آیدی <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> در ایتا ارسال کنید.</p><p>⏳ زمان ارسال: <strong>حداکثر ۵ روز کاری</strong>.</p></div>
+                <button class="close-invoice" onclick="closeInvoice()">✕ بستن فاکتور</button>
+            `;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // ============================================================
+        // بستن فاکتور + ارسال به ایمیل (با متد mailto)
+        // ============================================================
+        function closeInvoice() {
+            // 1. بستن پنجره فاکتور
+            document.getElementById('invoiceOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+
+            // 2. ارسال فاکتور به ایمیل (با اطلاعات مشتری)
+            const addr = currentOrderAddress || { name: '', phone: '', address: '', postalCode: '' };
+            let total = 0;
+            let itemsText = '';
+            cart.forEach(item => {
+                const product = productData.find(p => p.name === item.name);
+                if (product) {
+                    total += item.qty * product.price;
+                    itemsText += `- ${item.name} (${item.qty}) = ${product.price.toLocaleString()} تومان\n`;
                 }
             });
 
-            downloadBtn.addEventListener('click', function() {
-                if (!lastBlob) return;
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(lastBlob);
-                link.download = lastFileName;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-                setStatus(`✅ فایل «${lastFileName}» دانلود شد!`);
-            });
+            const message = `
+🛒 سفارش جدید در برق یزدیان
 
-            setStatus('✨ آماده‌ی ساخت پاورپوینت با مثال تشریحی');
-        })();
+👤 مشتری: ${addr.name}
+📞 تلفن: ${addr.phone}
+📍 آدرس: ${addr.address}
+📮 کد پستی: ${addr.postalCode}
+
+📦 محصولات:
+${itemsText}
+
+💰 جمع کل: ${total.toLocaleString()} تومان
+📅 تاریخ: ${new Date().toLocaleDateString('fa-IR')}
+
+لطفاً هرچه سریع‌تر رسیدگی شود.
+            `;
+
+            const subject = encodeURIComponent('🛒 سفارش جدید در برق یزدیان');
+            const body = encodeURIComponent(message);
+            window.location.href = `mailto:my2267ty5@gmail.com?subject=${subject}&body=${body}`;
+
+            // 3. خالی کردن سبد
+            cart = [];
+            updateCart();
+            document.getElementById('paymentMessage').classList.remove('show');
+        }
+
+        // ===== جستجو =====
+        function searchProducts() {
+            const input = document.getElementById('searchInput');
+            const query = input.value.trim().toLowerCase();
+            const aboutDiv = document.getElementById('aboutUs');
+            const hint = document.getElementById('searchHint');
+            if (query.includes('درباره') || query.includes('ما') || query.includes('about')) {
+                aboutDiv.classList.add('show');
+            } else {
+                aboutDiv.classList.remove('show');
+            }
+            if (query === '') {
+                hint.textContent = '🔍 بیش از ۱۵۰ قطعه مختلف در فروشگاه موجود است.';
+                renderProducts(productData);
+                return;
+            }
+            const filtered = productData.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                p.type.toLowerCase().includes(query)
+            );
+            hint.textContent = `🔍 ${filtered.length} نتیجه پیدا شد.`;
+            renderProducts(filtered);
+        }
+
+        // ===== اجرای اولیه =====
+        renderProducts(productData);
+        updateCart();
+
+        function toggleContact() {
+            document.getElementById('contactPanel').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            const panel = document.getElementById('contactPanel');
+            const btn = document.querySelector('.floating-btn');
+            if (!panel.contains(event.target) && !btn.contains(event.target)) {
+                panel.classList.remove('show');
+            }
+        }
+        document.getElementById('invoiceOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeInvoice();
+            }
+        });
     </script>
+
 </body>
     </html>
-
 
