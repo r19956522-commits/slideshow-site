@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ===== جلوگیری از ایندکس شدن در گوگل ===== -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>پنل ادمین | برق یزدیان</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            direction: rtl;
+            padding: 20px;
+        }
+        .admin-panel {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #00d4ff;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.1);
+        }
+        .admin-panel h1 {
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #00d4ff;
+            padding-bottom: 10px;
+        }
+        .admin-panel label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #aaa;
+        }
+        .admin-panel input[type="password"],
+        .admin-panel input[type="text"],
+        .admin-panel input[type="number"],
+        .admin-panel select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 1rem;
+            direction: rtl;
+        }
+        .admin-panel button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 30px;
+            border: none;
+            background: #00d4ff;
+            color: #000;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .admin-panel button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+        .login-box {
+            display: block;
+        }
+        .dashboard {
+            display: none;
+        }
+        .info-cards {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .info-card {
+            background: #0a0a0a;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        .info-card .number {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        .info-card .label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .tab-bar {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+        .tab-bar button {
+            flex: 1;
+            min-width: 100px;
+            padding: 10px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #aaa;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .tab-bar button.active {
+            border-color: #00d4ff;
+            color: #fff;
+            background: #111;
+        }
+        .tab-content {
+            display: none;
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .tab-content::-webkit-scrollbar-thumb {
+            background: #00d4ff;
+            border-radius: 10px;
+        }
+
+        .order-item {
+            background: #111;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin-bottom: 10px;
+        }
+        .order-item .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+        .order-item .details {
+            font-size: 0.85rem;
+            color: #aaa;
+            margin-top: 5px;
+        }
+        .order-item .status {
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .status-pending {
+            background: #b8860b;
+            color: #fff;
+        }
+        .status-confirmed {
+            background: #1e8b3c;
+            color: #fff;
+        }
+        .status-rejected {
+            background: #8b1e1e;
+            color: #fff;
+        }
+        .order-item .actions button {
+            width: auto;
+            padding: 5px 15px;
+            margin: 3px;
+            font-size: 0.8rem;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-confirm {
+            background: #44ff44;
+            color: #000;
+        }
+        .btn-reject {
+            background: #ff4444;
+            color: #fff;
+        }
+        .btn-confirm:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(68, 255, 68, 0.3);
+        }
+        .btn-reject:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+        }
+
+        .product-edit-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #111;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #333;
+        }
+        .product-edit-item input,
+        .product-edit-item select {
+            flex: 1;
+            min-width: 100px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .product-edit-item button {
+            width: auto;
+            padding: 6px 15px;
+            margin: 0;
+            font-size: 0.8rem;
+            background: #00d4ff;
+            color: #000;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .product-edit-item button:hover {
+            transform: scale(1.05);
+        }
+        .product-edit-item .img-preview {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #333;
+        }
+
+        .sales-item {
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        .sales-item .total-sale {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #ff4444 !important;
+            color: #fff !important;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            box-shadow: 0 0 30px rgba(255, 68, 68, 0.3) !important;
+        }
+
+        .success-msg,
+        .error-msg {
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: none;
+            text-align: center;
+        }
+        .success-msg {
+            background: #1a3a1a;
+            border: 1px solid #44ff44;
+            color: #88ff88;
+        }
+        .error-msg {
+            background: #3a1a1a;
+            border: 1px solid #ff4444;
+            color: #ff8888;
+        }
+        .success-msg.show,
+        .error-msg.show {
+            display: block;
+        }
+
+        .search-box {
+            margin-bottom: 15px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .file-input-wrapper .btn-file {
+            background: #00d4ff;
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .admin-panel {
+                padding: 15px;
+            }
+            .info-cards {
+                flex-direction: column;
+            }
+            .order-item .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .product-edit-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .tab-bar button {
+                min-width: 60px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-panel" id="adminPanel">
+        <h1>🔒 پنل مدیریت</h1>
+
+        <!-- ===== صفحه ورود ===== -->
+        <div class="login-box" id="loginBox">
+            <label>رمز عبور ادمین</label>
+            <input type="password" id="adminPassword" placeholder="رمز عبور را وارد کنید" onkeydown="if(event.key==='Enter') login()">
+            <button onclick="login()">🔑 ورود به پنل</button>
+            <div class="error-msg" id="loginError">❌ رمز عبور اشتباه است!</div>
+        </div>
+
+        <!-- ===== داشبورد ===== -->
+        <div class="dashboard" id="dashboard">
+            <!-- کارت‌های اطلاعاتی -->
+            <div class="info-cards" id="infoCards">
+                <div class="info-card">
+                    <div class="number" id="pendingCount">۰</div>
+                    <div class="label">⏳ در انتظار تأیید</div>
+                </div>
+                <div class="info-card">
+                    <div class="number" id="confirmedCount">۰</div>
+                    <div class="label">✅ تأیید شده</div>
+                </div>
+                <div class="info-card">
+                    <div class="number" id="totalSales">۰</div>
+                    <div class="label">💰 کل فروش (تومان)</div>
+                </div>
+                <div class="info-card">
+                    <div class="number" id="totalStock">۰</div>
+                    <div class="label">📦 موجودی کل</div>
+                </div>
+            </div>
+
+            <!-- تب‌ها -->
+            <div class="tab-bar">
+                <button class="active" data-tab="tabOrders" onclick="switchTab('tabOrders')">📋 سفارشات</button>
+                <button data-tab="tabProducts" onclick="switchTab('tabProducts')">🛠️ محصولات</button>
+                <button data-tab="tabSales" onclick="switchTab('tabSales')">📊 فروش</button>
+            </div>
+
+            <!-- تب سفارشات -->
+            <div class="tab-content active" id="tabOrders">
+                <div id="ordersList">
+                    <!-- لیست سفارشات توسط جاوااسکریپت ساخته می‌شود -->
+                </div>
+            </div>
+
+            <!-- تب محصولات -->
+            <div class="tab-content" id="tabProducts">
+                <div class="search-box">
+                    <input type="text" id="searchProductAdmin" placeholder="جستجوی محصول..." onkeyup="filterProductsAdmin()">
+                </div>
+                <div id="productListAdmin">
+                    <!-- لیست محصولات توسط جاوااسکریپت ساخته می‌شود -->
+                </div>
+            </div>
+
+            <!-- تب فروش -->
+            <div class="tab-content" id="tabSales">
+                <div id="salesList">
+                    <!-- لیست فروش توسط جاوااسکریپت ساخته می‌شود -->
+                </div>
+            </div>
+
+            <button onclick="logout()" class="logout-btn">🚪 خروج از پنل</button>
+            <div class="success-msg" id="successMsg">✅ تغییرات با موفقیت ذخیره شد!</div>
+            <div class="error-msg" id="errorMsg">❌ خطا! لطفاً دوباره تلاش کنید.</div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // رمز عبور ادمین
+        // ============================================================
+        const ADMIN_PASSWORD = 'my2267123454321';
+
+        // ============================================================
+        // بارگذاری داده‌ها از localStorage
+        // ============================================================
+        function loadProducts() {
+            const saved = localStorage.getItem('productData');
+            if (saved) {
+                try { return JSON.parse(saved); } catch (e) { return []; }
+            }
+            return [];
+        }
+
+        function saveProducts(products) {
+            localStorage.setItem('productData', JSON.stringify(products));
+        }
+
+        function loadPendingOrders() {
+            const saved = localStorage.getItem('pendingOrders');
+            if (saved) {
+                try { return JSON.parse(saved); } catch (e) { return []; }
+            }
+            return [];
+        }
+
+        function savePendingOrders(orders) {
+            localStorage.setItem('pendingOrders', JSON.stringify(orders));
+        }
+
+        function loadSalesHistory() {
+            const saved = localStorage.getItem('salesHistory');
+            if (saved) {
+                try { return JSON.parse(saved); } catch (e) { return []; }
+            }
+            return [];
+        }
+
+        function saveSalesHistory(sales) {
+            localStorage.setItem('salesHistory', JSON.stringify(sales));
+        }
+
+        // ============================================================
+        // ورود به پنل
+        // ============================================================
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            const errorDiv = document.getElementById('loginError');
+
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginBox').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                errorDiv.classList.remove('show');
+                // بررسی سفارشات منقضی‌شده (۴۸ ساعت)
+                checkExpiredOrders();
+                loadDashboard();
+            } else {
+                errorDiv.classList.add('show');
+                setTimeout(() => errorDiv.classList.remove('show'), 3000);
+            }
+        }
+
+        // ============================================================
+        // خروج
+        // ============================================================
+        function logout() {
+            document.getElementById('loginBox').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('adminPassword').value = '';
+        }
+
+        // ============================================================
+        // بررسی سفارشات منقضی‌شده (۴۸ ساعت)
+        // ============================================================
+        function checkExpiredOrders() {
+            const orders = loadPendingOrders();
+            const now = Date.now();
+            const EXPIRY_TIME = 48 * 60 * 60 * 1000;
+            let changed = false;
+
+            orders.forEach(order => {
+                if (order.status === 'pending' && (now - order.timestamp) > EXPIRY_TIME) {
+                    order.status = 'rejected';
+                    changed = true;
+                    const products = loadProducts();
+                    order.items.forEach(item => {
+                        const prod = products.find(p => p.name === item.name);
+                        if (prod) {
+                            prod.count += item.qty;
+                        }
+                    });
+                    saveProducts(products);
+                }
+            });
+
+            if (changed) {
+                savePendingOrders(orders);
+                showSuccess('⏳ سفارش‌های منقضی‌شده به‌روزرسانی شدند.');
+            }
+        }
+
+        // ============================================================
+        // بارگذاری داشبورد
+        // ============================================================
+        function loadDashboard() {
+            updateStats();
+            renderOrders();
+            renderProductsAdmin(loadProducts());
+            renderSales();
+        }
+
+        // ============================================================
+        // به‌روزرسانی آمار
+        // ============================================================
+        function updateStats() {
+            const orders = loadPendingOrders();
+            const sales = loadSalesHistory();
+            const products = loadProducts();
+
+            const pending = orders.filter(o => o.status === 'pending').length;
+            const confirmed = orders.filter(o => o.status === 'confirmed').length;
+            let totalSales = 0;
+            sales.forEach(s => totalSales += s.total);
+
+            let totalStock = 0;
+            products.forEach(p => totalStock += p.count);
+
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('confirmedCount').textContent = confirmed;
+            document.getElementById('totalSales').textContent = totalSales.toLocaleString();
+            document.getElementById('totalStock').textContent = totalStock.toLocaleString();
+        }
+
+        // ============================================================
+        // رندر سفارشات
+        // ============================================================
+        function renderOrders() {
+            const container = document.getElementById('ordersList');
+            const orders = loadPendingOrders();
+
+            if (orders.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#888;">هیچ سفارشی ثبت نشده است.</p>';
+                return;
+            }
+
+            let html = '';
+            orders.forEach((order, index) => {
+                const statusClass = order.status === 'pending' ? 'status-pending' :
+                    order.status === 'confirmed' ? 'status-confirmed' : 'status-rejected';
+                const statusText = order.status === 'pending' ? '⏳ در انتظار' :
+                    order.status === 'confirmed' ? '✅ تأیید شده' : '❌ رد شده';
+
+                const itemsText = order.items.map(i => `${i.name} (${i.qty})`).join('، ');
+
+                html += `
+                    <div class="order-item">
+                        <div class="header">
+                            <span><strong>🆔 سفارش:</strong> ${order.id}</span>
+                            <span><strong>💰 مبلغ:</strong> ${order.totalText}</span>
+                            <span class="status ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="details">
+                            <div><strong>👤 مشتری:</strong> ${order.customer.name} | 📞 ${order.customer.phone}</div>
+                            <div><strong>📍 آدرس:</strong> ${order.customer.address}</div>
+                            <div><strong>📦 محصولات:</strong> ${itemsText}</div>
+                            <div><strong>📅 تاریخ:</strong> ${new Date(order.timestamp).toLocaleString('fa-IR')}</div>
+                            ${order.status === 'pending' ? `
+                                <div class="actions">
+                                    <button class="btn-confirm" onclick="confirmOrder(${index})">✅ تأیید</button>
+                                    <button class="btn-reject" onclick="rejectOrder(${index})">❌ رد</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ============================================================
+        // تأیید سفارش
+        // ============================================================
+        function confirmOrder(index) {
+            const orders = loadPendingOrders();
+            if (index >= orders.length) return;
+
+            const order = orders[index];
+            if (order.status !== 'pending') {
+                showError('این سفارش قبلاً بررسی شده است.');
+                return;
+            }
+
+            order.status = 'confirmed';
+            savePendingOrders(orders);
+
+            const sales = loadSalesHistory();
+            sales.push({
+                id: order.id,
+                customer: order.customer,
+                items: order.items,
+                total: order.total,
+                totalText: order.totalText,
+                timestamp: Date.now()
+            });
+            saveSalesHistory(sales);
+
+            showSuccess('✅ سفارش تأیید شد و به فروش اضافه گردید.');
+            loadDashboard();
+        }
+
+        // ============================================================
+        // رد سفارش (بازگشت موجودی)
+        // ============================================================
+        function rejectOrder(index) {
+            const orders = loadPendingOrders();
+            if (index >= orders.length) return;
+
+            const order = orders[index];
+            if (order.status !== 'pending') {
+                showError('این سفارش قبلاً بررسی شده است.');
+                return;
+            }
+
+            order.status = 'rejected';
+            savePendingOrders(orders);
+
+            const products = loadProducts();
+            order.items.forEach(item => {
+                const prod = products.find(p => p.name === item.name);
+                if (prod) {
+                    prod.count += item.qty;
+                }
+            });
+            saveProducts(products);
+
+            showSuccess('❌ سفارش رد شد و موجودی به انبار بازگردانده شد.');
+            loadDashboard();
+        }
+
+        // ============================================================
+        // مدیریت محصولات
+        // ============================================================
+        function renderProductsAdmin(products) {
+            const container = document.getElementById('productListAdmin');
+            if (products.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#888;">محصولی یافت نشد.</p>';
+                return;
+            }
+
+            let html = '';
+            products.forEach((p, index) => {
+                const imgSrc = p.image || getPlaceholderImage(p.name);
+                html += `
+                    <div class="product-edit-item" data-index="${index}">
+                        <img src="${imgSrc}" alt="${p.name}" class="img-preview" id="preview-${index}">
+                        <input type="text" id="pname-${index}" value="${p.name}" placeholder="نام">
+                        <input type="text" id="ptype-${index}" value="${p.type || ''}" placeholder="نوع">
+                        <input type="number" id="pprice-${index}" value="${p.price}" placeholder="قیمت عددی">
+                        <input type="text" id="ppriceText-${index}" value="${p.priceText}" placeholder="متن قیمت">
+                        <input type="number" id="pcount-${index}" value="${p.count}" placeholder="موجودی">
+                        <div class="file-input-wrapper">
+                            <button class="btn-file">📸 عکس</button>
+                            <input type="file" accept="image/*" onchange="uploadImage(${index}, this)">
+                        </div>
+                        <button onclick="saveProduct(${index})">💾 ذخیره</button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function getPlaceholderImage(name) {
+            return `https://placehold.co/300x200/1a1a1a/00d4ff?text=${encodeURIComponent(name)}`;
+        }
+
+        function uploadImage(index, input) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgData = e.target.result;
+                const products = loadProducts();
+                if (index < products.length) {
+                    products[index].image = imgData;
+                    saveProducts(products);
+                    const preview = document.getElementById(`preview-${index}`);
+                    if (preview) preview.src = imgData;
+                    showSuccess('✅ عکس محصول با موفقیت آپلود شد!');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveProduct(index) {
+            const products = loadProducts();
+            if (index >= products.length) return;
+
+            const name = document.getElementById(`pname-${index}`).value.trim();
+            const type = document.getElementById(`ptype-${index}`).value.trim();
+            const price = parseInt(document.getElementById(`pprice-${index}`).value);
+            const priceText = document.getElementById(`ppriceText-${index}`).value.trim();
+            const count = parseInt(document.getElementById(`pcount-${index}`).value);
+
+            if (!name || isNaN(price) || isNaN(count)) {
+                showError('❌ لطفاً همه فیلدها را به‌درستی پر کنید.');
+                return;
+            }
+
+            products[index].name = name;
+            products[index].type = type;
+            products[index].price = price;
+            products[index].priceText = priceText || price.toLocaleString() + ' تومان';
+            products[index].count = count;
+
+            saveProducts(products);
+            showSuccess('✅ محصول با موفقیت به‌روز شد!');
+            renderProductsAdmin(products);
+            updateStats();
+        }
+
+        function filterProductsAdmin() {
+            const query = document.getElementById('searchProductAdmin').value.trim().toLowerCase();
+            const all = loadProducts();
+            if (query === '') {
+                renderProductsAdmin(all);
+                return;
+            }
+            const filtered = all.filter(p => p.name.toLowerCase().includes(query) || p.type?.toLowerCase().includes(query));
+            renderProductsAdmin(filtered);
+        }
+
+        // ============================================================
+        // نمایش فروش
+        // ============================================================
+        function renderSales() {
+            const container = document.getElementById('salesList');
+            const sales = loadSalesHistory();
+
+            if (sales.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#888;">هنوز فروشی ثبت نشده است.</p>';
+                return;
+            }
+
+            let html = '';
+            let totalAll = 0;
+            sales.forEach(s => {
+                totalAll += s.total;
+                const itemsText = s.items.map(i => `${i.name} (${i.qty})`).join('، ');
+                html += `
+                    <div class="sales-item">
+                        <div><strong>🆔 سفارش:</strong> ${s.id}</div>
+                        <div><strong>👤 مشتری:</strong> ${s.customer.name} | 📞 ${s.customer.phone}</div>
+                        <div><strong>📦 محصولات:</strong> ${itemsText}</div>
+                        <div><strong>💰 مبلغ:</strong> <span class="total-sale">${s.totalText}</span></div>
+                        <div><strong>📅 تاریخ:</strong> ${new Date(s.timestamp).toLocaleString('fa-IR')}</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = `
+                <div style="background:#1a1a2a; padding:15px; border-radius:10px; border:1px solid #00d4ff; margin-bottom:15px;">
+                    <h3 style="color:#ffcc00;">💰 مجموع فروش کل: ${totalAll.toLocaleString()} تومان</h3>
+                </div>
+                ${html}
+            `;
+        }
+
+        // ============================================================
+        // تب‌ها
+        // ============================================================
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-bar button').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+
+            if (tabId === 'tabOrders') renderOrders();
+            if (tabId === 'tabProducts') renderProductsAdmin(loadProducts());
+            if (tabId === 'tabSales') renderSales();
+        }
+
+        // ============================================================
+        // پیام‌ها
+        // ============================================================
+        function showSuccess(msg) {
+            const div = document.getElementById('successMsg');
+            div.textContent = msg;
+            div.classList.add('show');
+            setTimeout(() => div.classList.remove('show'), 4000);
+        }
+
+        function showError(msg) {
+            const div = document.getElementById('errorMsg');
+            div.textContent = msg;
+            div.classList.add('show');
+            setTimeout(() => div.classList.remove('show'), 4000);
+        }
+
+        // ============================================================
+        // ورود با کلید Enter
+        // ============================================================
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const loginBox = document.getElementById('loginBox');
+                if (loginBox.style.display !== 'none') {
+                    login();
+                }
+            }
+        });
+
+        // ============================================================
+        // اجرای اولیه
+        // ============================================================
+        console.log('پنل ادمین برق یزدیان بارگذاری شد.');
+    </script>
+
+</body>
+              </html>
