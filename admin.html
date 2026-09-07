@@ -8,6 +8,7 @@
     <meta name="googlebot" content="noindex, nofollow">
     <title>پنل ادمین | برق یزدیان</title>
     <style>
+        /* ===== تنظیمات کلی ===== */
         * {
             margin: 0;
             padding: 0;
@@ -29,7 +30,7 @@
             padding: 30px;
             border-radius: 20px;
             border: 2px solid #00d4ff;
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
             box-shadow: 0 0 50px rgba(0, 212, 255, 0.1);
         }
@@ -271,6 +272,26 @@
             font-weight: bold;
         }
 
+        .filter-btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            background: #0a0a0a;
+            color: #aaa;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .filter-btn.active {
+            border-color: #00d4ff;
+            color: #fff;
+            background: #111;
+        }
+        .filter-btn:hover {
+            border-color: #00d4ff;
+            color: #fff;
+        }
+
         .logout-btn {
             background: #ff4444 !important;
             color: #fff !important;
@@ -421,8 +442,14 @@
                 </div>
             </div>
 
-            <!-- تب فروش -->
+            <!-- تب فروش (با فیلترهای روزانه، هفتگی، ماهانه و کل) -->
             <div class="tab-content" id="tabSales">
+                <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:15px;">
+                    <button class="filter-btn active" data-filter="today" onclick="setSalesFilter('today')">📅 امروز</button>
+                    <button class="filter-btn" data-filter="week" onclick="setSalesFilter('week')">📅 این هفته</button>
+                    <button class="filter-btn" data-filter="month" onclick="setSalesFilter('month')">📅 این ماه</button>
+                    <button class="filter-btn" data-filter="all" onclick="setSalesFilter('all')">📅 کل</button>
+                </div>
                 <div id="salesList">
                     <!-- لیست فروش توسط جاوااسکریپت ساخته می‌شود -->
                 </div>
@@ -439,6 +466,11 @@
         // رمز عبور ادمین
         // ============================================================
         const ADMIN_PASSWORD = 'my2267123454321';
+
+        // ============================================================
+        // متغیر فیلتر فروش
+        // ============================================================
+        let salesFilter = 'today';
 
         // ============================================================
         // بارگذاری داده‌ها از localStorage
@@ -490,7 +522,6 @@
                 document.getElementById('loginBox').style.display = 'none';
                 document.getElementById('dashboard').style.display = 'block';
                 errorDiv.classList.remove('show');
-                // بررسی سفارشات منقضی‌شده (۴۸ ساعت)
                 checkExpiredOrders();
                 loadDashboard();
             } else {
@@ -771,20 +802,46 @@
         }
 
         // ============================================================
-        // نمایش فروش
+        // نمایش فروش با فیلترهای روزانه، هفتگی، ماهانه و کل
         // ============================================================
+        function getFilteredSales() {
+            const sales = loadSalesHistory();
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+            const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay()).getTime();
+            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).getTime();
+
+            return sales.filter(sale => {
+                if (salesFilter === 'today') return sale.timestamp >= today;
+                if (salesFilter === 'week') return sale.timestamp >= weekStart;
+                if (salesFilter === 'month') return sale.timestamp >= monthStart;
+                return true; // all
+            });
+        }
+
+        function setSalesFilter(filter) {
+            salesFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active');
+                }
+            });
+            renderSales();
+        }
+
         function renderSales() {
             const container = document.getElementById('salesList');
-            const sales = loadSalesHistory();
+            const filteredSales = getFilteredSales();
 
-            if (sales.length === 0) {
-                container.innerHTML = '<p style="text-align:center;color:#888;">هنوز فروشی ثبت نشده است.</p>';
+            if (filteredSales.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#888;">هیچ فروشی در این بازه ثبت نشده است.</p>';
                 return;
             }
 
             let html = '';
             let totalAll = 0;
-            sales.forEach(s => {
+            filteredSales.forEach(s => {
                 totalAll += s.total;
                 const itemsText = s.items.map(i => `${i.name} (${i.qty})`).join('، ');
                 html += `
@@ -798,9 +855,16 @@
                 `;
             });
 
+            const filterNames = {
+                'today': 'امروز',
+                'week': 'این هفته',
+                'month': 'این ماه',
+                'all': 'کل'
+            };
             container.innerHTML = `
                 <div style="background:#1a1a2a; padding:15px; border-radius:10px; border:1px solid #00d4ff; margin-bottom:15px;">
-                    <h3 style="color:#ffcc00;">💰 مجموع فروش کل: ${totalAll.toLocaleString()} تومان</h3>
+                    <h3 style="color:#ffcc00;">💰 فروش ${filterNames[salesFilter] || 'کل'}: ${totalAll.toLocaleString()} تومان</h3>
+                    <p style="color:#888; font-size:0.8rem;">تعداد سفارشات: ${filteredSales.length} عدد</p>
                 </div>
                 ${html}
             `;
@@ -856,4 +920,4 @@
     </script>
 
 </body>
-              </html>
+    </html>
