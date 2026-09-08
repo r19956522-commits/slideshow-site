@@ -3,39 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ============================================================
-    تگ‌های سئو (SEO) برای گوگل
-    ============================================================ -->
-    <title>فروشگاه برق یزدیان | خرید قطعات الکترونیک، آردوینو و ماژول</title>
-    <meta name="description" content="فروشگاه تخصصی برق یزدیان با بیش از ۱۵۰ نوع قطعه الکترونیکی، آردوینو، ماژول، ترانزیستور و آی‌سی. ارسال به سراسر ایران با پست.">
-    <meta name="keywords" content="فروشگاه برق, قطعات الکترونیک, آردوینو, ماژول, ترانزیستور, آی‌سی, فروشگاه برق یزدیان, خرید الکترونیک">
-    <meta name="robots" content="index, follow">
+    <title>فروشگاه برق یزدیان | خرید قطعات الکترونیک</title>
+    <meta name="description" content="فروشگاه تخصصی برق یزدیان با بیش از ۱۵۰ نوع قطعه الکترونیکی، آردوینو، ماژول، ترانزیستور و آی‌سی.">
+    <meta name="keywords" content="فروشگاه برق, قطعات الکترونیک, آردوینو, ماژول, ترانزیستور, آی‌سی">
     <link rel="canonical" href="https://r19956522-commits.github.io/slideshow-site/">
-
-    <!-- Open Graph برای شبکه‌های اجتماعی -->
-    <meta property="og:title" content="فروشگاه برق یزدیان | خرید قطعات الکترونیک">
-    <meta property="og:description" content="بیش از ۱۵۰ قطعه الکترونیکی با قیمت مناسب. ارسال به سراسر ایران.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://r19956522-commits.github.io/slideshow-site/">
-    <meta property="og:image" content="https://r19956522-commits.github.io/slideshow-site/images/InShot_20260825_135547342.jpg">
-
-    <!-- داده‌های ساختاریافته (Schema) برای گوگل -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Store",
-        "name": "برق یزدیان",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "تهران، خیابان ولیعصر، نرسیده به میدان تجریش، پلاک ۱۲۳",
-            "addressLocality": "تهران",
-            "addressCountry": "IR"
-        },
-        "telephone": "09108580755",
-        "url": "https://r19956522-commits.github.io/slideshow-site/"
-    }
-    </script>
 
     <style>
         /* ===== تنظیمات کلی ===== */
@@ -63,7 +34,55 @@
             color: inherit;
         }
 
-        /* ===== کپی‌رایت ===== */
+        /* ===== بخش آموزش خرید (جدید) ===== */
+        .how-to-buy {
+            background: linear-gradient(135deg, #0a1a2a, #1a2a3a);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 20px 30px;
+            text-align: center;
+        }
+        .how-to-buy h2 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .how-to-buy .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .how-to-buy .step {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 12px 18px;
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            color: #ccc;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .how-to-buy .step:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.1);
+        }
+        .how-to-buy .step .icon {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .how-to-buy .step .num {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* ===== بنر کپی‌رایت ===== */
         .copyright-banner {
             background: #2a0a0a;
             border-bottom: 2px solid #ff4444;
@@ -1058,6 +1077,14 @@
                 position: static;
                 transform: none;
             }
+            .how-to-buy .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            .how-to-buy .step {
+                max-width: 100%;
+                width: 100%;
+            }
             .invoice-overlay .invoice-card {
                 padding: 15px;
             }
@@ -1091,6 +1118,46 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== بخش آموزش خرید (در بالای سایت) ===== -->
+    <section class="how-to-buy">
+        <h2>📖 راهنمای خرید از فروشگاه برق یزدیان</h2>
+        <div class="steps">
+            <div class="step">
+                <span class="icon">🔍</span>
+                <span class="num">مرحله ۱</span>
+                محصول مورد نظر خود را جستجو یا پیدا کنید.
+            </div>
+            <div class="step">
+                <span class="icon">➕</span>
+                <span class="num">مرحله ۲</span>
+                تعداد مورد نیاز را انتخاب کرده و به سبد خرید اضافه کنید.
+            </div>
+            <div class="step">
+                <span class="icon">📍</span>
+                <span class="num">مرحله ۳</span>
+                اطلاعات ارسال (نام، آدرس، تلفن) را تکمیل کنید.
+            </div>
+            <div class="step">
+                <span class="icon">🧾</span>
+                <span class="num">مرحله ۴</span>
+                فاکتور را دریافت کرده و شماره کارت را مشاهده کنید.
+            </div>
+            <div class="step">
+                <span class="icon">📸</span>
+                <span class="num">مرحله ۵</span>
+                عکس واریزی و فاکتور را به آیدی ایتا ارسال کنید.
+            </div>
+            <div class="step">
+                <span class="icon">📦</span>
+                <span class="num">مرحله ۶</span>
+                پس از تأیید، کالا برای شما ارسال می‌شود.
+            </div>
+        </div>
+        <p style="color:#888; font-size:0.8rem; margin-top:12px;">
+            📌 برای اطلاعات بیشتر، به بخش <strong style="color:var(--primary-color);">روش‌های ارسال</strong> مراجعه کنید.
+        </p>
+    </section>
 
     <!-- ===== بنر کپی‌رایت ===== -->
     <div class="copyright-banner" id="copyrightBanner">
@@ -1233,12 +1300,12 @@
             <p style="color: #aaa; font-size: 0.9rem;">به نام: محمدرسول یزدیان</p>
             <div class="shipping-condition">
                 <strong>📦 شرط ارسال:</strong><br>
-                ارسال <strong>پیامک واریزی</strong>، <strong>عکس فاکتور نهایی</strong> و <strong>آدرس دقیق</strong> به آیدی 
+                ارسال <strong>پیامک واریزی</strong>، <strong>عکس فاکتور نهایی</strong> و <strong>آدرس دقیق</strong> به آیدی
                 <strong>yazdian2@</strong> در ایتا الزامی است.
             </div>
             <div class="guide-text">
-                <p>📌 پس از واریز، عکس فاکتور، عکس پیامک واریزی و آدرس کامل خود را به آیدی 
-                <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a> 
+                <p>📌 پس از واریز، عکس فاکتور، عکس پیامک واریزی و آدرس کامل خود را به آیدی
+                <a href="https://eitaa.com/yazdian2" target="_blank" style="color:var(--gold);">yazdian2@</a>
                 در ایتا ارسال کنید تا کالا برای شما ارسال شود.</p>
                 <p>⏳ زمان ارسال: <strong>حداکثر ۵ روز کاری</strong>.</p>
             </div>
@@ -1276,7 +1343,7 @@
             <p><strong>📌 هزینه ارسال به عهده مشتری است.</strong></p>
             <p>بسته‌ها هر <span class="highlight">۳ روز کاری</span> یکبار به اداره پست تحویل داده می‌شوند.</p>
             <p>🔹 پس از ارسال، <strong>کد مرسوله</strong> در <strong>کانال ایتا</strong> فروشگاه قرار می‌گیرد و شما می‌توانید با استفاده از آن، وضعیت بسته خود را پیگیری کنید.</p>
-            <p style="margin-top: 10px; color: #888;">👉 برای دریافت کد مرسوله، حتماً در کانال ایتا عضو شوید:  
+            <p style="margin-top: 10px; color: #888;">👉 برای دریافت کد مرسوله، حتماً در کانال ایتا عضو شوید:
                 <span class="copyable">@electro_satisfaction</span>
                 <button class="copy-btn" onclick="copyText('@electro_satisfaction')">کپی</button>
             </p>
@@ -1376,7 +1443,7 @@
         }
 
         // ============================================================
-        // بارگذاری و ذخیره محصولات
+        // بارگذاری محصولات از localStorage (همگام با پنل ادمین)
         // ============================================================
         function loadProductData() {
             const saved = localStorage.getItem('productData');
@@ -1697,7 +1764,8 @@
 
             currentOrderAddress = { name, phone, address, postalCode };
             const invoiceBox = document.getElementById('invoiceBox');
-            let total = 0, rows = '';
+            let total = 0,
+                rows = '';
             cart.forEach(item => {
                 const product = productData.find(p => p.name === item.name);
                 const itemTotal = item.qty * item.price;
@@ -1734,76 +1802,13 @@
         }
 
         // ============================================================
-        // 🚀 ارسال فاکتور به ایمیل (با Web3Forms یا mailto)
-        // ============================================================
-        function sendInvoiceToEmail(orderData) {
-            // ====== راه اول: استفاده از Web3Forms (خودکار) ======
-            // لینک فرم خود را از Web3Forms دریافت کنید و اینجا قرار دهید
-            const WEB3FORMS_URL = 'YOUR_WEB3FORMS_URL'; // جایگزین کنید
-
-            if (WEB3FORMS_URL !== 'YOUR_WEB3FORMS_URL') {
-                // ارسال با Web3Forms
-                fetch(WEB3FORMS_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(orderData)
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        console.log('✅ ایمیل با موفقیت ارسال شد!');
-                    } else {
-                        console.warn('⚠️ Web3Forms خطا داد، استفاده از mailto...');
-                        sendWithMailto(orderData);
-                    }
-                })
-                .catch(() => {
-                    console.warn('⚠️ Web3Forms در دسترس نیست، استفاده از mailto...');
-                    sendWithMailto(orderData);
-                });
-            } else {
-                // ====== راه دوم: استفاده از mailto (امن و همیشه کار می‌کند) ======
-                sendWithMailto(orderData);
-            }
-        }
-
-        // ============================================================
-        // ارسال با mailto (روش جایگزین و تضمینی)
-        // ============================================================
-        function sendWithMailto(orderData) {
-            const message = `
-🛒 سفارش جدید در برق یزدیان
-
-🆔 شماره فاکتور: ${orderData.orderId}
-👤 مشتری: ${orderData.name}
-📞 تلفن: ${orderData.phone}
-📍 آدرس: ${orderData.address}
-📮 کد پستی: ${orderData.postalCode}
-
-📦 محصولات:
-${orderData.items}
-
-💰 جمع کل: ${orderData.total}
-📅 تاریخ: ${orderData.date}
-
-لطفاً هرچه سریع‌تر رسیدگی شود.
-            `;
-
-            const subject = encodeURIComponent('🛒 سفارش جدید در برق یزدیان - ' + orderData.orderId);
-            const body = encodeURIComponent(message);
-            window.open(`mailto:my2267ty5@gmail.com?subject=${subject}&body=${body}`);
-        }
-
-        // ============================================================
-        // نمایش فاکتور نهایی (با ارسال ایمیل)
+        // نمایش فاکتور نهایی و ارسال ایمیل
         // ============================================================
         function showInvoiceInPage() {
-            if (cart.length === 0) {
-                alert('سبد خرید خالی است!');
-                return;
-            }
+            if (cart.length === 0) { alert('سبد خرید خالی است!'); return; }
 
-            let total = 0, rows = '';
+            let total = 0,
+                rows = '';
             const items = [];
             cart.forEach(item => {
                 const product = productData.find(p => p.name === item.name);
@@ -1826,10 +1831,9 @@ ${orderData.items}
                 </div>
             `;
 
-            // ===== ۱. ساخت شماره فاکتور =====
             const orderId = Date.now() + '_' + Math.random().toString(36).substr(2, 5);
 
-            // ===== ۲. ذخیره درخواست در localStorage برای ادمین =====
+            // ذخیره در localStorage برای پنل ادمین
             const pendingOrder = {
                 id: orderId,
                 timestamp: Date.now(),
@@ -1843,18 +1847,15 @@ ${orderData.items}
             pendingOrders.push(pendingOrder);
             localStorage.setItem('pendingOrders', JSON.stringify(pendingOrders));
 
-            // ===== ۳. کاهش موقت موجودی (قفل شدن) =====
+            // کاهش موقت موجودی
             cart.forEach(item => {
                 const product = productData.find(p => p.name === item.name);
-                if (product) {
-                    product.count -= item.qty;
-                    if (product.count < 0) product.count = 0;
-                }
+                if (product) { product.count -= item.qty; if (product.count < 0) product.count = 0; }
             });
             saveProductData(productData);
             updateStockDisplay();
 
-            // ===== ۴. ارسال ایمیل به صورت خودکار =====
+            // ارسال ایمیل (با mailto)
             const orderData = {
                 orderId: orderId,
                 name: addr.name,
@@ -1867,7 +1868,7 @@ ${orderData.items}
             };
             sendInvoiceToEmail(orderData);
 
-            // ===== ۵. نمایش فاکتور در Overlay =====
+            // نمایش فاکتور
             const overlay = document.getElementById('invoiceOverlay');
             const card = document.getElementById('invoiceCard');
             card.innerHTML = `
@@ -1896,8 +1897,31 @@ ${orderData.items}
         }
 
         // ============================================================
-        // بستن فاکتور
+        // ارسال فاکتور به ایمیل
         // ============================================================
+        function sendInvoiceToEmail(orderData) {
+            const message = `
+        🛒 سفارش جدید در برق یزدیان
+
+        🆔 شماره فاکتور: ${orderData.orderId}
+        👤 مشتری: ${orderData.name}
+        📞 تلفن: ${orderData.phone}
+        📍 آدرس: ${orderData.address}
+        📮 کد پستی: ${orderData.postalCode}
+
+        📦 محصولات:
+        ${orderData.items}
+
+        💰 جمع کل: ${orderData.total}
+        📅 تاریخ: ${orderData.date}
+
+        لطفاً هرچه سریع‌تر رسیدگی شود.
+        `;
+            const subject = encodeURIComponent('🛒 سفارش جدید در برق یزدیان - ' + orderData.orderId);
+            const body = encodeURIComponent(message);
+            window.open(`mailto:my2267ty5@gmail.com?subject=${subject}&body=${body}`);
+        }
+
         function closeInvoice() {
             document.getElementById('invoiceOverlay').classList.remove('active');
             document.body.style.overflow = '';
